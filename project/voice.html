@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="fr"><head>
+
+
+<meta charset="UTF-8">
+<title>Pech'tacom — Voix &amp; contenu</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: white; margin: 0; padding: 56px; color: var(--pt-noir); }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  .head { display: flex; align-items: baseline; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+  .head h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: 56px;
+             letter-spacing: -0.03em; margin: 0; }
+  .head .lede { font-family: var(--pt-font-body); color: var(--pt-text-muted);
+                font-size: 18px; max-width: 560px; line-height: 1.5; margin: 0; }
+
+  .section-h { display: flex; align-items: end; justify-content: space-between; margin: 56px 0 20px; }
+  .section-h h3 { font-family: var(--pt-font-title); font-size: 28px; font-weight: 800;
+                  letter-spacing: -0.02em; margin: 0; }
+  .section-h .ey { font-family: var(--pt-font-title); font-size: 12px;
+                   letter-spacing: 0.18em; text-transform: uppercase;
+                   color: var(--pt-rose); font-weight: 700; }
+
+  /* Mantra hero */
+  .mantra {
+    background: var(--pt-bg-warm);
+    border-radius: 32px; padding: 64px 56px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center;
+  }
+  .mantra .ey { font-family: var(--pt-font-title); font-size: 12px;
+                letter-spacing: 0.18em; text-transform: uppercase;
+                color: var(--pt-rose); font-weight: 700; margin-bottom: 12px; }
+  .mantra .quote {
+    font-family: var(--pt-font-title); font-weight: 800;
+    font-size: clamp(36px, 4.6vw, 60px); letter-spacing: -0.03em;
+    line-height: 1.05; margin: 0;
+  }
+  .mantra .quote em { font-style: italic; color: var(--pt-rose); font-weight: 800; }
+  .mantra p { font-family: var(--pt-font-body); font-size: 16px; line-height: 1.55;
+              color: var(--pt-noir); margin: 16px 0 0; max-width: 380px; }
+
+  /* Voice attributes */
+  .attr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .attr {
+    border-radius: 24px; padding: 28px;
+    border: 1px solid var(--pt-border);
+    background: white;
+  }
+  .attr h4 { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px;
+             letter-spacing: -0.015em; margin: 0 0 6px; }
+  .attr .anti { font-family: var(--pt-font-body); font-size: 13px; color: var(--pt-text-muted);
+                margin: 0 0 14px; }
+  .attr .anti b { color: var(--pt-rose); font-weight: 700; }
+  .attr p { font-family: var(--pt-font-body); font-size: 14px; line-height: 1.55;
+            color: var(--pt-noir); margin: 0; }
+
+  /* Yes/No examples */
+  .yn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .yn { padding: 28px; border-radius: 22px; }
+  .yn .tag { display: inline-flex; align-items: center; gap: 8px;
+             font-family: var(--pt-font-title); font-weight: 700; font-size: 12px;
+             letter-spacing: 0.16em; text-transform: uppercase;
+             padding: 6px 12px; border-radius: 999px; margin-bottom: 14px; }
+  .yn.do { background: var(--pt-bg-warm); }
+  .yn.do .tag { background: white; color: #2D8A4F; }
+  .yn.dont { background: white; border: 1.5px solid var(--pt-border); }
+  .yn.dont .tag { background: var(--pt-accent-soft); color: var(--pt-rose); }
+  .yn .copy { font-family: var(--pt-font-title); font-weight: 700; font-size: 22px;
+              letter-spacing: -0.015em; line-height: 1.2; margin: 0 0 10px; color: var(--pt-noir); }
+  .yn .why { font-family: var(--pt-font-body); font-size: 13.5px; line-height: 1.5;
+             color: var(--pt-text-muted); margin: 0; }
+
+  /* Lexicon — peach puns */
+  .lex {
+    background: var(--pt-noir); color: white;
+    border-radius: 32px; padding: 40px 48px;
+  }
+  .lex h3 { font-family: var(--pt-font-title); font-weight: 800; font-size: 28px;
+            letter-spacing: -0.02em; margin: 0 0 8px; }
+  .lex .sub { font-family: var(--pt-font-body); font-size: 15px; opacity: .75; margin: 0 0 28px; max-width: 540px; }
+  .lex .pun-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+                   border-radius: 16px; overflow: hidden; }
+  .lex .pun { padding: 22px; border: 1px solid rgba(255,255,255,.1); }
+  .lex .pun .word { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px;
+                    letter-spacing: -0.02em; margin-bottom: 4px; color: var(--pt-jaune); }
+  .lex .pun .def { font-family: var(--pt-font-body); font-size: 13px; line-height: 1.5;
+                   color: rgba(255,255,255,.78); }
+
+  /* Naming patterns */
+  .name-list { display: grid; grid-template-columns: 200px 1fr; gap: 18px 32px;
+               border-top: 1px solid var(--pt-border); padding-top: 24px; }
+  .name-list .k { font-family: var(--pt-font-title); font-weight: 700; font-size: 14px; color: var(--pt-rose); }
+  .name-list .v { font-family: var(--pt-font-body); font-size: 15px; line-height: 1.55; }
+  .name-list .v code { font-family: ui-monospace, monospace; font-size: 13px;
+                       background: var(--pt-bg-warm); padding: 2px 8px; border-radius: 6px; }
+
+  /* CTA library */
+  .cta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cta-row { display: grid; grid-template-columns: 1fr 2fr; gap: 16px;
+             padding: 14px 18px; background: var(--pt-bg-warm); border-radius: 14px;
+             align-items: center; }
+  .cta-row .label { font-family: var(--pt-font-title); font-size: 12px; font-weight: 700;
+                    letter-spacing: 0.12em; text-transform: uppercase; color: var(--pt-text-muted); }
+  .cta-row .copy { font-family: var(--pt-font-body); font-weight: 700; font-size: 15px; }
+</style>
+</head>
+<body style="">
+<div class="wrap">
+
+  <header class="head">
+    <h1>Voix &amp; contenu</h1>
+    <p class="lede">Une parole de passionnés de la com', avec un goût prononcé pour le jeu de mots fruité. Toujours en français, jamais corporate, ni tutoyant à l'excès.</p>
+  </header>
+
+  <!-- Mantra -->
+  <div class="mantra">
+    <div>
+      <div class="ey">Mantra</div>
+      <p style="margin:0; font-family: var(--pt-font-body); font-size: 15px; color: var(--pt-text-muted); line-height: 1.5">À garder en tête à chaque ligne écrite. Si une phrase ne tient pas dans le mantra, on la jette.</p>
+    </div>
+    <p class="quote" style="">Le <span style="color: rgb(255, 0, 61);">fruit</span> de vos idées sont à <span style="color: rgb(255, 0, 61);">cueillir</span> chez nous</p>
+  </div>
+
+  <!-- Voice attributes -->
+  <div class="section-h">
+    <h3>Quatre piliers de voix</h3>
+    <div class="ey">brand voice</div>
+  </div>
+  <div class="attr-grid">
+    <div class="attr">
+      <h4>Chaleureux</h4>
+      <p class="anti"><b>pas</b> familier ni complice forcé</p>
+      <p>On vouvoie en B2B, on accueille en B2C. La chaleur passe par le rythme, pas par les emojis.</p>
+    </div>
+    <div class="attr">
+      <h4>Précis</h4>
+      <p class="anti"><b>pas</b> jargonnesque</p>
+      <p>Les mots techniques s'invitent quand ils éclairent. On préfère « identité » à « branding », « site » à « web platform ».</p>
+    </div>
+    <div class="attr">
+      <h4>Ludique</h4>
+      <p class="anti"><b>pas</b> bouffon</p>
+      <p>Un jeu de mot fruité par page maximum, dans les titres ou les CTA. Le corps de texte reste sobre.</p>
+    </div>
+    <div class="attr">
+      <h4>Direct</h4>
+      <p class="anti"><b>pas</b> agressif</p>
+      <p>Phrases courtes (15–20 mots). Verbes d'action en début. Une idée par paragraphe.</p>
+    </div>
+  </div>
+
+  <!-- Yes / No examples -->
+  <div class="section-h">
+    <h3>À dire / à éviter</h3>
+    <div class="ey">copy examples</div>
+  </div>
+
+  <div class="yn-row">
+    <div class="yn do">
+      <div class="tag">✓ On dit</div>
+      <p class="copy">« On parle d'abord, on dessine ensuite. »</p>
+      <p class="why">Phrase courte, parallèle, pédagogique. Affirme un parti-pris sans le sur-vendre.</p>
+    </div>
+    <div class="yn dont">
+      <div class="tag">✗ On évite</div>
+      <p class="copy">« Notre approche méthodologique multi-touch repose sur un discovery sprint. »</p>
+      <p class="why">Sept mots-jargon dans une phrase. Pech'tacom n'est pas une agence parisienne déguisée.</p>
+    </div>
+  </div>
+
+  <div class="yn-row">
+    <div class="yn do">
+      <div class="tag">✓ On dit</div>
+      <p class="copy">« Ce site, on l'a fait en 6 semaines. Un peu plus de temps qu'une saison de pêches. »</p>
+      <p class="why">Concret, chiffré, image fruitée discrète. Donne le ton sans en faire trop.</p>
+    </div>
+    <div class="yn dont">
+      <div class="tag">✗ On évite</div>
+      <p class="copy">« Une expérience digitale fruitée et juteuse pour booster votre brand. »</p>
+      <p class="why">Trop de jeux de mots empilés tuent le jeu de mots. La marque devient sa propre caricature.</p>
+    </div>
+  </div>
+
+  <div class="yn-row">
+    <div class="yn do">
+      <div class="tag">✓ On dit</div>
+      <p class="copy">« Brief envoyé. On revient vers vous sous 48h. »</p>
+      <p class="why">Confirmation utile, claire, datée. La marque tient parole avant tout.</p>
+    </div>
+    <div class="yn dont">
+      <div class="tag">✗ On évite</div>
+      <p class="copy">« Merci ! Nous avons hâte de prendre connaissance de votre projet. »</p>
+      <p class="why">Formule de politesse vide. N'apporte rien à l'utilisateur — qui veut juste savoir « et après ? ».</p>
+    </div>
+  </div>
+
+  <!-- Peach lexicon -->
+  <div class="lex" style="margin-top: 56px">
+    <h3>Le verger Pech'tacom</h3>
+    <p class="sub">Mots et images du champ lexical de la pêche, du marché, de l'arboriculture. À utiliser avec parcimonie — un par paragraphe, pas un par phrase.</p>
+    <div class="pun-grid">
+      <div class="pun"><div class="word">Récolter</div><div class="def">Pour : « collecter », « rassembler ». ↳ « On récolte vos idées en atelier. »</div></div>
+      <div class="pun"><div class="word">Faire mûrir</div><div class="def">Pour : « peaufiner », « valider ». ↳ « On fait mûrir le concept avant la prod. »</div></div>
+      <div class="pun"><div class="word">Cueillir</div><div class="def">Pour : « choisir le bon moment ». ↳ « On cueille les bonnes idées au bon moment. »</div></div>
+      <div class="pun"><div class="word">En saison</div><div class="def">Pour : « actuel », « pertinent ». ↳ « Une com' en saison, qui colle à votre marché. »</div></div>
+      <div class="pun"><div class="word">Le noyau</div><div class="def">Pour : « le cœur », « l'essentiel ». ↳ « On va droit au noyau du brief. »</div></div>
+      <div class="pun"><div class="word">Juteux</div><div class="def">À utiliser avec mesure. ↳ « Un projet juteux » pour un beau dossier inspirant. Jamais : « contenu juteux ».</div></div>
+    </div>
+  </div>
+
+  <!-- Naming -->
+  <div class="section-h">
+    <h3>Conventions de nommage</h3>
+    <div class="ey">noms d'offres &amp; produits</div>
+  </div>
+  <div class="name-list">
+    <div class="k">Format ateliers</div>
+    <div class="v">Toujours « Le + thème » ou un nom-action. <code>L'atelier Verger</code>, <code>Le brand sprint</code>, <code>La récolte</code>.</div>
+    <div class="k">Packs services</div>
+    <div class="v">Pas de marketing-ese (« Premium », « Pro », « Enterprise »). Préférer <code>Le panier</code>, <code>La cagette</code>, <code>La caisse</code> (S, M, L).</div>
+    <div class="k">Études de cas</div>
+    <div class="v">Format <code>[Nom de la marque] · [verbe au présent]</code>. <code>Confitures Bouchon · réveille la confiture maison.</code></div>
+    <div class="k">Articles de blog</div>
+    <div class="v">Question + réponse en sous-titre. <code>Faut-il refaire son logo ? — Trois signes qu'il est temps.</code></div>
+  </div>
+
+  <!-- CTA library -->
+  <div class="section-h">
+    <h3>Bibliothèque de CTA</h3>
+    <div class="ey">verbs · cta · micro-copy</div>
+  </div>
+  <div class="cta-grid">
+    <div class="cta-row"><div class="label">Hero principal</div><div class="copy">Démarrer un projet →</div></div>
+    <div class="cta-row"><div class="label">Hero alt</div><div class="copy">Récolter mes idées</div></div>
+    <div class="cta-row"><div class="label">Service · primaire</div><div class="copy">On en discute ?</div></div>
+    <div class="cta-row"><div class="label">Service · secondaire</div><div class="copy">Voir un cas similaire</div></div>
+    <div class="cta-row"><div class="label">Newsletter</div><div class="copy">Je m'abonne au verger</div></div>
+    <div class="cta-row"><div class="label">Brief express</div><div class="copy">Envoyer le brief</div></div>
+    <div class="cta-row"><div class="label">404</div><div class="copy">Retour à la cagette</div></div>
+    <div class="cta-row"><div class="label">Footer</div><div class="copy">Faire mûrir une idée</div></div>
+  </div>
+
+</div>
+
+
+</body></html>

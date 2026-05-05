@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pech'tacom — Typographie</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: #fff; margin: 0; padding: 56px; }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  .head { display: flex; align-items: baseline; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+  .head h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: 56px;
+             letter-spacing: -0.03em; margin: 0; color: var(--pt-noir); }
+  .head .lede { font-family: var(--pt-font-body); color: var(--pt-text-muted);
+                font-size: 18px; max-width: 560px; line-height: 1.5; margin: 0; }
+
+  .pair-card {
+    border-radius: 32px; padding: 48px;
+    border: 1px solid var(--pt-border);
+    background: white; margin-bottom: 28px;
+    display: grid; grid-template-columns: 280px 1fr; gap: 56px;
+  }
+  .pair-card.beige { background: var(--pt-bg-warm); border-color: transparent; }
+
+  .meta .role { font-family: var(--pt-font-title); font-size: 12px;
+                letter-spacing: 0.18em; text-transform: uppercase;
+                color: var(--pt-rose); font-weight: 700; }
+  .meta .name { font-family: var(--pt-font-title); font-weight: 800; font-size: 38px;
+                letter-spacing: -0.02em; margin: 8px 0 4px; color: var(--pt-noir); }
+  .meta .alt { font-family: var(--pt-font-body); font-size: 14px; color: var(--pt-text-muted); margin: 0 0 20px; }
+  .meta .alt b { color: var(--pt-noir); font-weight: 700; }
+  .meta .weights { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .meta .w { font-family: var(--pt-font-body); font-size: 12px;
+             padding: 4px 10px; border-radius: 999px;
+             background: var(--pt-bg-warm); color: var(--pt-noir);
+             border: 1px solid var(--pt-border); }
+  .pair-card.beige .meta .w { background: white; }
+
+  .demo .specimen { font-size: 116px; line-height: 1; letter-spacing: -0.04em; margin-bottom: 24px; }
+  .demo .row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+               border-top: 1px dashed var(--pt-border); padding-top: 24px; }
+  .pair-card.beige .demo .row { border-color: rgba(0,0,0,.08); }
+  .demo .row .lab { font-family: var(--pt-font-body); font-size: 12px; color: var(--pt-text-muted);
+                    text-transform: uppercase; letter-spacing: .12em; margin-bottom: 6px; }
+
+  .stack { font-family: var(--pt-font-title); font-weight: 800; }
+  .stack .l1 { font-size: 80px; line-height: 1.04; letter-spacing: -0.03em; }
+  .stack .l2 { font-size: 48px; line-height: 1.06; letter-spacing: -0.02em; margin-top: 4px; }
+  .stack .l3 { font-size: 32px; line-height: 1.1; letter-spacing: -0.015em; margin-top: 8px; font-weight: 700; }
+  .stack .l4 { font-size: 18px; line-height: 1.2; letter-spacing: -0.01em; margin-top: 8px; font-weight: 600; }
+
+  .body-stack { font-family: var(--pt-font-body); }
+  .body-stack .lead { font-size: 22px; line-height: 1.5; font-weight: 500; color: var(--pt-noir); margin-bottom: 16px; }
+  .body-stack .body { font-size: 16px; line-height: 1.6; color: var(--pt-noir); margin-bottom: 12px; }
+  .body-stack .small { font-size: 13px; line-height: 1.5; color: var(--pt-text-muted); }
+
+  /* Scale card */
+  .scale-card {
+    border-radius: 32px; padding: 48px;
+    background: var(--pt-noir); color: white;
+  }
+  .scale-card h3 { font-family: var(--pt-font-title); font-weight: 800; font-size: 28px;
+                   letter-spacing: -0.02em; margin: 0 0 32px; }
+  .scale-row { display: grid; grid-template-columns: 100px 80px 1fr; align-items: baseline;
+               gap: 24px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-row .nm { font-family: ui-monospace, monospace; font-size: 12px; color: rgba(255,255,255,.6); }
+  .scale-row .px { font-family: ui-monospace, monospace; font-size: 12px; color: var(--pt-jaune); }
+  .scale-row .sp { font-family: var(--pt-font-title); font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+
+  .pun {
+    font-family: var(--pt-font-title); font-weight: 800; font-size: 18px;
+    letter-spacing: -0.01em; color: var(--pt-rose);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <h1>Typographie</h1>
+    <p class="lede">Deux familles complémentaires : Mazzard pour les titres percutants, All Round Gothic pour la chair des textes. À défaut, on utilise <b>Manrope</b> et <b>Nunito</b> en alternatives libres.</p>
+  </header>
+
+  <!-- Title font -->
+  <div class="pair-card">
+    <div class="meta">
+      <div class="role">Titres · Display</div>
+      <div class="name">Mazzard</div>
+      <p class="alt">Substitut libre : <b>Manrope</b><br>Géométrique, contemporain, aimable.</p>
+      <div class="weights">
+        <span class="w">300 Light</span>
+        <span class="w">400 Regular</span>
+        <span class="w">500 Medium</span>
+        <span class="w">600 Semibold</span>
+        <span class="w">800 Black</span>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="specimen stack" style="color: var(--pt-noir)">Aa</div>
+      <div class="stack" style="margin-bottom: 32px">
+        <div class="l1">Le fruit de vos idées.</div>
+        <div class="l2">Une com' qui a du jus.</div>
+        <div class="l3">Studio créatif & com' digitale</div>
+        <div class="l4">Brief, ateliers, livrables — chaque saison.</div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="lab">Tracking serré</div>
+          <div style="font-family: var(--pt-font-title); font-weight: 800; font-size: 32px; letter-spacing: -0.03em">Pech'tacom</div>
+        </div>
+        <div>
+          <div class="lab">Eyebrow</div>
+          <div style="font-family: var(--pt-font-title); font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose)">Identité de marque</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body font -->
+  <div class="pair-card beige">
+    <div class="meta">
+      <div class="role">Corps · Body</div>
+      <div class="name">All Round Gothic</div>
+      <p class="alt">Substitut libre : <b>Nunito</b><br>Sans-serif arrondi, terminaisons douces.</p>
+      <div class="weights">
+        <span class="w">300 Light</span>
+        <span class="w">400 Book</span>
+        <span class="w">500 Medium</span>
+        <span class="w">600 Demibold</span>
+        <span class="w">700 Bold</span>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="specimen" style="font-family: var(--pt-font-body); font-weight: 800; color: var(--pt-noir)">Aa</div>
+      <div class="body-stack">
+        <p class="lead">On ne fait pas de la com' pour faire joli. Chez Pech'tacom, on récolte vos idées comme on cueille des pêches : avec patience, et au bon moment.</p>
+        <p class="body">Identité visuelle, sites internet, campagnes social media — chaque livrable est pensé comme un fruit mûr : il ne sort de l'arbre que quand il est prêt à être dégusté.</p>
+        <p class="small">Studio indépendant · Toulouse · Travaillons ensemble depuis 2019</p>
+      </div>
+      <div class="row" style="margin-top: 32px">
+        <div>
+          <div class="lab">Lien</div>
+          <a href="#" style="font-family: var(--pt-font-body); font-size: 16px; color: var(--pt-rose); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; font-weight: 600">voir le portfolio →</a>
+        </div>
+        <div>
+          <div class="lab">Caption</div>
+          <div style="font-family: var(--pt-font-body); font-size: 12px; color: var(--pt-text-muted)">© 2026 Pech'tacom — Le fruit de vos idées</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Type scale -->
+  <div class="scale-card">
+    <h3>Échelle typographique</h3>
+    <div class="scale-row"><div class="nm">display</div><div class="px">112 / 1.04</div><div class="sp" style="font-size:84px">Pech'tacom</div></div>
+    <div class="scale-row"><div class="nm">h1</div><div class="px">64 / 1.04</div><div class="sp" style="font-size:56px">Une com' qui pèche</div></div>
+    <div class="scale-row"><div class="nm">h2</div><div class="px">44 / 1.1</div><div class="sp" style="font-size:40px">Stratégie de marque</div></div>
+    <div class="scale-row"><div class="nm">h3</div><div class="px">24 / 1.2</div><div class="sp" style="font-size:24px">Atelier découverte</div></div>
+    <div class="scale-row"><div class="nm">body</div><div class="px">16 / 1.5</div><div class="sp" style="font-family: var(--pt-font-body); font-weight: 400; font-size: 16px; line-height: 1.5; letter-spacing: 0">On parle d'abord, on dessine ensuite.</div></div>
+    <div class="scale-row"><div class="nm">caption</div><div class="px">12 / 1.4</div><div class="sp" style="font-family: var(--pt-font-body); font-weight: 500; font-size: 12px; letter-spacing: 0; color: rgba(255,255,255,.7)">Lecture · 4 min</div></div>
+  </div>
+
+</div>
+</body>
+</html>

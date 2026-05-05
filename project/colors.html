@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pech'tacom — Couleurs</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: var(--pt-bg); margin: 0; padding: 56px; }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  .head { display: flex; align-items: baseline; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
+  .head h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: 56px;
+             letter-spacing: -0.03em; margin: 0; color: var(--pt-noir); }
+  .head .lede { font-family: var(--pt-font-body); color: var(--pt-text-muted);
+                font-size: 18px; max-width: 520px; line-height: 1.5; margin: 0; }
+
+  /* Hero gradient panel */
+  .hero {
+    background: var(--pt-gradient);
+    border-radius: 32px;
+    padding: 56px;
+    color: white;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; right: -80px; top: -80px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,218,0,.5), transparent 70%);
+    pointer-events: none;
+  }
+  .hero h2 { font-family: var(--pt-font-title); font-size: 44px; font-weight: 800;
+             letter-spacing: -0.02em; margin: 0 0 8px; }
+  .hero p { font-family: var(--pt-font-body); font-size: 17px; opacity: .92;
+            max-width: 600px; margin: 0; line-height: 1.5; }
+  .hero .stops { display: flex; gap: 24px; margin-top: 32px; }
+  .hero .stop { display: flex; align-items: center; gap: 10px; font-family: var(--pt-font-body);
+                font-size: 13px; font-weight: 600; }
+  .hero .stop .dot { width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+
+  /* Section header */
+  .section-h { display: flex; align-items: end; justify-content: space-between;
+               margin: 56px 0 20px; }
+  .section-h h3 { font-family: var(--pt-font-title); font-size: 28px; font-weight: 800;
+                  letter-spacing: -0.02em; margin: 0; color: var(--pt-noir); }
+  .section-h .ey { font-family: var(--pt-font-title); font-size: 12px;
+                   letter-spacing: 0.18em; text-transform: uppercase;
+                   color: var(--pt-rose); font-weight: 700; }
+
+  /* Core swatches grid */
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .sw { border-radius: 20px; padding: 0; overflow: hidden;
+        border: 1px solid var(--pt-border); background: white; }
+  .sw .chip { height: 160px; }
+  .sw .meta { padding: 16px 18px 18px; }
+  .sw .name { font-family: var(--pt-font-title); font-weight: 800; font-size: 16px;
+              letter-spacing: -0.01em; color: var(--pt-noir); }
+  .sw .role { font-family: var(--pt-font-body); font-size: 13px; color: var(--pt-text-muted);
+              margin-top: 2px; }
+  .sw .codes { display: flex; gap: 14px; margin-top: 12px;
+               font-family: ui-monospace, monospace; font-size: 11.5px;
+               color: var(--pt-text-muted); }
+  .sw .codes b { color: var(--pt-noir); font-weight: 600; }
+
+  /* Tints / shades grid */
+  .tints { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+           border-radius: 20px; overflow: hidden; border: 1px solid var(--pt-border); }
+  .tint { aspect-ratio: 1.2; padding: 14px; display: flex; flex-direction: column;
+          justify-content: space-between; font-family: ui-monospace, monospace; font-size: 11px; }
+
+  /* Usage bars */
+  .usage { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .uchip { border-radius: 20px; padding: 28px; display: flex; flex-direction: column;
+           justify-content: space-between; min-height: 200px; }
+  .uchip .label { font-family: var(--pt-font-title); font-size: 13px;
+                  letter-spacing: 0.16em; text-transform: uppercase; opacity: .85; }
+  .uchip .demo { font-family: var(--pt-font-title); font-size: 32px; font-weight: 800;
+                 letter-spacing: -0.02em; line-height: 1.04; }
+
+  /* Pairings */
+  .pairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pair { border-radius: 20px; padding: 32px; min-height: 140px; display: flex;
+          flex-direction: column; justify-content: space-between; }
+  .pair .h { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px;
+             letter-spacing: -0.01em; line-height: 1.1; }
+  .pair .t { font-family: var(--pt-font-body); font-size: 13px; opacity: .85;
+             font-family: ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <h1>Couleurs</h1>
+    <p class="lede">La palette Pech'tacom mêle l'énergie solaire d'une pêche bien mûre à un noir profond. Le dégradé jaune→orange→rose est la signature de la marque.</p>
+  </header>
+
+  <!-- Hero: signature gradient -->
+  <div class="hero">
+    <h2>Le dégradé Pech'tacom</h2>
+    <p>Le fruit de vos idées prend vie dans un dégradé linéaire à 135° qui passe du jaune (#FFDA00) au rose (#FF003D), avec l'orange (#FF5408) en pivot.</p>
+    <div class="stops">
+      <div class="stop"><span class="dot" style="background:#FFDA00"></span>#FFDA00 · 0%</div>
+      <div class="stop"><span class="dot" style="background:#FF5408"></span>#FF5408 · 52%</div>
+      <div class="stop"><span class="dot" style="background:#FF003D"></span>#FF003D · 100%</div>
+    </div>
+  </div>
+
+  <!-- Core palette -->
+  <div class="section-h">
+    <h3>Palette principale</h3>
+    <div class="ey">5 couleurs · charte graphique</div>
+  </div>
+  <div class="swatches">
+    <div class="sw">
+      <div class="chip" style="background:#FFDA00"></div>
+      <div class="meta">
+        <div class="name">Jaune</div>
+        <div class="role">Lumière, accent, accroche</div>
+        <div class="codes"><span><b>HEX</b> #FFDA00</span></div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#FF5408"></div>
+      <div class="meta">
+        <div class="name">Orange</div>
+        <div class="role">Énergie, transitions</div>
+        <div class="codes"><span><b>HEX</b> #FF5408</span></div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#FF003D"></div>
+      <div class="meta">
+        <div class="name">Rose</div>
+        <div class="role">Couleur primaire, CTA</div>
+        <div class="codes"><span><b>HEX</b> #FF003D</span></div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#FFECD9"></div>
+      <div class="meta">
+        <div class="name">Beige</div>
+        <div class="role">Fond chaud, surfaces</div>
+        <div class="codes"><span><b>HEX</b> #FFECD9</span></div>
+      </div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#262426"></div>
+      <div class="meta">
+        <div class="name">Noir</div>
+        <div class="role">Texte, ancrage</div>
+        <div class="codes"><span><b>HEX</b> #262426</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rose tints/shades -->
+  <div class="section-h">
+    <h3>Échelle Rose</h3>
+    <div class="ey">teintes système</div>
+  </div>
+  <div class="tints">
+    <div class="tint" style="background:#FFE5EC; color:#262426">50<br><b>#FFE5EC</b></div>
+    <div class="tint" style="background:#FFB8C9; color:#262426">100<br><b>#FFB8C9</b></div>
+    <div class="tint" style="background:#FF6E8C; color:#fff">300<br><b>#FF6E8C</b></div>
+    <div class="tint" style="background:#FF003D; color:#fff">500<br><b>#FF003D</b></div>
+    <div class="tint" style="background:#CC002F; color:#fff">700<br><b>#CC002F</b></div>
+    <div class="tint" style="background:#7A001D; color:#fff">900<br><b>#7A001D</b></div>
+  </div>
+
+  <!-- Usage rules -->
+  <div class="section-h">
+    <h3>Règles d'usage</h3>
+    <div class="ey">application</div>
+  </div>
+  <div class="usage">
+    <div class="uchip" style="background:#FF003D; color:white">
+      <div class="label">Primaire — Rose</div>
+      <div class="demo">CTA, liens importants, accents éditoriaux. À doser : 10–15% d'une page.</div>
+    </div>
+    <div class="uchip" style="background:#FFECD9; color:#262426">
+      <div class="label">Surface chaude — Beige</div>
+      <div class="demo">Fond éditorial, sections « calmes », alternance avec le blanc.</div>
+    </div>
+    <div class="uchip" style="background:#262426; color:white">
+      <div class="label">Texte — Noir 262426</div>
+      <div class="demo">Corps de texte sur fond clair. Légèrement chaud, jamais pur noir.</div>
+    </div>
+    <div class="uchip" style="background:linear-gradient(135deg,#FFDA00,#FF5408 52%,#FF003D); color:white">
+      <div class="label">Dégradé — Signature</div>
+      <div class="demo">Réservé aux moments forts : hero, badges, fonds vedette.</div>
+    </div>
+  </div>
+
+  <!-- Pairings -->
+  <div class="section-h">
+    <h3>Pairings recommandés</h3>
+    <div class="ey">contraste & lisibilité</div>
+  </div>
+  <div class="pairs">
+    <div class="pair" style="background:#FFECD9; color:#262426">
+      <div class="h">Beige + Noir</div>
+      <div class="t">#FFECD9 / #262426 · AAA</div>
+    </div>
+    <div class="pair" style="background:#FF003D; color:white">
+      <div class="h">Rose + Blanc</div>
+      <div class="t">#FF003D / #FFFFFF · AA</div>
+    </div>
+    <div class="pair" style="background:#262426; color:#FFDA00">
+      <div class="h">Noir + Jaune</div>
+      <div class="t">#262426 / #FFDA00 · AAA</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

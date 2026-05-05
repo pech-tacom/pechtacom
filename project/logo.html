@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pech'tacom — Logo</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: white; margin: 0; padding: 56px; }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  .head { display: flex; align-items: baseline; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+  .head h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: 56px;
+             letter-spacing: -0.03em; margin: 0; color: var(--pt-noir); }
+  .head .lede { font-family: var(--pt-font-body); color: var(--pt-text-muted);
+                font-size: 18px; max-width: 560px; line-height: 1.5; margin: 0; }
+
+  /* Hero lockup */
+  .hero {
+    background: var(--pt-gradient-radial);
+    border-radius: 32px;
+    padding: 80px 56px;
+    margin-bottom: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px;
+    color: white;
+    position: relative; overflow: hidden;
+  }
+  .hero img { width: 100%; max-width: 380px; }
+  .hero h2 { font-family: var(--pt-font-title); font-size: 56px; font-weight: 800;
+             letter-spacing: -0.03em; margin: 0 0 16px; line-height: 1; }
+  .hero p { font-family: var(--pt-font-body); font-size: 18px; line-height: 1.5;
+            opacity: .92; margin: 0 0 24px; max-width: 460px; }
+  .hero .tagline { font-family: var(--pt-font-title); font-style: italic;
+                   font-weight: 500; font-size: 20px; opacity: .9; }
+
+  /* Lockup grid */
+  .section-h { display: flex; align-items: end; justify-content: space-between; margin: 56px 0 20px; }
+  .section-h h3 { font-family: var(--pt-font-title); font-size: 28px; font-weight: 800;
+                  letter-spacing: -0.02em; margin: 0; color: var(--pt-noir); }
+  .section-h .ey { font-family: var(--pt-font-title); font-size: 12px;
+                   letter-spacing: 0.18em; text-transform: uppercase;
+                   color: var(--pt-rose); font-weight: 700; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .lk {
+    border-radius: 24px; border: 1px solid var(--pt-border);
+    padding: 0; overflow: hidden; background: white;
+    display: flex; flex-direction: column;
+  }
+  .lk .stage { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+               padding: 32px; }
+  .lk .stage.dark { background: #262426; }
+  .lk .stage.beige { background: #FFECD9; }
+  .lk .stage.white { background: white; border-bottom: 1px solid var(--pt-border); }
+  .lk img { max-width: 100%; max-height: 100%; }
+  .lk .cap { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .lk .cap .ttl { font-family: var(--pt-font-title); font-weight: 700; font-size: 15px;
+                  color: var(--pt-noir); letter-spacing: -0.01em; }
+  .lk .cap .file { font-family: ui-monospace, monospace; font-size: 11px; color: var(--pt-text-muted); }
+
+  /* Clearspace block */
+  .clearspace {
+    background: var(--pt-bg-warm);
+    border-radius: 32px; padding: 56px;
+    margin-top: 28px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+  }
+  .clearspace h3 { font-family: var(--pt-font-title); font-weight: 800; font-size: 32px;
+                   letter-spacing: -0.02em; margin: 0 0 12px; color: var(--pt-noir); }
+  .clearspace p { font-family: var(--pt-font-body); font-size: 16px; line-height: 1.5;
+                  color: var(--pt-noir); margin: 0 0 12px; }
+  .clearspace .rules { display: grid; grid-template-columns: auto 1fr; gap: 12px 18px;
+                       font-family: var(--pt-font-body); font-size: 14px; margin-top: 24px; }
+  .clearspace .rules .k { font-weight: 700; color: var(--pt-rose); white-space: nowrap; }
+
+  .cs-stage {
+    background: white; border-radius: 20px; padding: 60px 80px; position: relative;
+    aspect-ratio: 1.4; display: flex; align-items: center; justify-content: center;
+  }
+  .cs-stage img { max-width: 70%; position: relative; z-index: 2; }
+  /* dotted clear-space outline */
+  .cs-stage::before {
+    content: ""; position: absolute; inset: 28px;
+    border: 2px dashed rgba(255,0,61,.35); border-radius: 12px;
+    pointer-events: none;
+  }
+  .cs-stage .corner { position: absolute; width: 22px; height: 22px;
+                      background: var(--pt-jaune); }
+  .cs-stage .c1 { top: 18px; left: 18px; }
+  .cs-stage .c2 { top: 18px; right: 18px; }
+  .cs-stage .c3 { bottom: 18px; left: 18px; }
+  .cs-stage .c4 { bottom: 18px; right: 18px; }
+  .cs-stage .x { position: absolute; font-family: var(--pt-font-title); font-weight: 800;
+                 font-size: 13px; color: var(--pt-rose); }
+  .cs-stage .x1 { top: 22px; left: 22px; }
+  .cs-stage .x2 { top: 22px; right: 22px; }
+  .cs-stage .x3 { bottom: 22px; left: 22px; }
+  .cs-stage .x4 { bottom: 22px; right: 22px; }
+  .cs-stage .ruler { position: absolute; right: 60px; top: 18px; height: 14px;
+                     border-left: 1px solid #FF003D; border-right: 1px solid #FF003D;
+                     display: flex; align-items: center; justify-content: center;
+                     font-family: var(--pt-font-title); font-weight: 700; font-size: 11px;
+                     color: var(--pt-rose); width: 28px; }
+
+  /* Misuse */
+  .dont-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+  .dont {
+    border-radius: 20px; border: 1px solid var(--pt-border); overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .dont .stage {
+    aspect-ratio: 1.1; display: flex; align-items: center; justify-content: center;
+    padding: 24px; position: relative;
+  }
+  .dont .stage::after {
+    content: "✗"; position: absolute; top: 8px; right: 12px;
+    font-family: var(--pt-font-title); font-size: 24px; font-weight: 800;
+    color: var(--pt-rose);
+  }
+  .dont img { max-width: 70%; }
+  .dont .cap { padding: 14px 18px; font-family: var(--pt-font-body); font-size: 13px;
+               color: var(--pt-text-muted); border-top: 1px solid var(--pt-border); }
+  .dont .stage.stretch img { transform: scaleX(1.4); }
+  .dont .stage.rotate img { transform: rotate(-12deg); }
+  .dont .stage.tint { background: #2A6FDB; }
+  .dont .stage.tint img { filter: brightness(0) invert(1); }
+  .dont .stage.busy {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><circle cx="30" cy="30" r="20" fill="%23FFDA00"/><circle cx="0" cy="0" r="20" fill="%23FF5408"/><circle cx="60" cy="60" r="20" fill="%23FF003D"/></svg>') #FFB;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <h1>Logo</h1>
+    <p class="lede">Le logotype Pech'tacom est manuscrit et organique : la pêche s'inscrit dans le « co » de « com ». Trois petites gouttes jaunes au-dessus du H rappellent l'éclat du fruit qu'on croque.</p>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="assets/logo-circle-gradient.png" alt="Pech'tacom logo on gradient">
+    <div>
+      <h2>pech'tacom</h2>
+      <p>Le logo principal. Sur fond clair, on privilégie la version couleur. Sur fond chaud (dégradé, photo, rose plein), on bascule sur la version blanche.</p>
+      <div class="tagline">« Le fruit de vos idées. »</div>
+    </div>
+  </div>
+
+  <!-- All lockups -->
+  <div class="section-h">
+    <h3>Déclinaisons</h3>
+    <div class="ey">5 lockups officiels</div>
+  </div>
+  <div class="grid3">
+    <div class="lk">
+      <div class="stage white"><img src="assets/logo-color.png" alt="Pech'tacom couleur"></div>
+      <div class="cap"><span class="ttl">En couleurs</span><span class="file">logo-color.png</span></div>
+    </div>
+    <div class="lk">
+      <div class="stage white"><img src="assets/logo-mono.png" alt="Pech'tacom N&B"></div>
+      <div class="cap"><span class="ttl">N&B</span><span class="file">logo-mono.png</span></div>
+    </div>
+    <div class="lk">
+      <div class="stage white"><img src="assets/logo-baseline.png" alt="Pech'tacom avec baseline"></div>
+      <div class="cap"><span class="ttl">Avec baseline</span><span class="file">logo-baseline.png</span></div>
+    </div>
+    <div class="lk">
+      <div class="stage" style="background:#FFECD9"><img src="assets/logo-circle-gradient.png" alt="Sur fond dégradé"></div>
+      <div class="cap"><span class="ttl">Pastille dégradé</span><span class="file">logo-circle-gradient.png</span></div>
+    </div>
+    <div class="lk">
+      <div class="stage" style="background:#FFECD9"><img src="assets/logo-circle-red.png" alt="Sur fond rose"></div>
+      <div class="cap"><span class="ttl">Pastille rose</span><span class="file">logo-circle-red.png</span></div>
+    </div>
+    <div class="lk">
+      <div class="stage dark"><img src="assets/logo-circle-gradient.png" alt="Sur fond noir"></div>
+      <div class="cap"><span class="ttl">Sur fond sombre</span><span class="file">pastille préférée</span></div>
+    </div>
+  </div>
+
+  <!-- Clear space -->
+  <div class="clearspace">
+    <div>
+      <div class="ey" style="font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700;">Les règles</div>
+      <h3>Zone de respect</h3>
+      <p>Une marge minimum équivalente à <b>2 cm</b> (ou la hauteur du « p » initial) doit entourer le logo de tout autre élément graphique, photo, ou bord de support.</p>
+      <p>Cette zone garantit la lisibilité et le « calme » visuel de la marque.</p>
+      <div class="rules">
+        <div class="k">Marge X</div><div>= hauteur du « p » initial</div>
+        <div class="k">Min print</div><div>≥ 25 mm de largeur</div>
+        <div class="k">Min écran</div><div>≥ 80 px de largeur</div>
+        <div class="k">Réduction</div><div>la baseline « Le fruit de vos idées » disparaît sous 80 mm</div>
+      </div>
+    </div>
+    <div class="cs-stage">
+      <span class="corner c1"></span><span class="x x1">X</span>
+      <span class="corner c2"></span><span class="x x2">X</span>
+      <span class="corner c3"></span><span class="x x3">X</span>
+      <span class="corner c4"></span><span class="x x4">X</span>
+      <img src="assets/logo-color.png" alt="Pech'tacom logo">
+    </div>
+  </div>
+
+  <!-- Misuse -->
+  <div class="section-h">
+    <h3>À éviter</h3>
+    <div class="ey">interdictions</div>
+  </div>
+  <div class="dont-grid">
+    <div class="dont">
+      <div class="stage stretch"><img src="assets/logo-color.png" alt=""></div>
+      <div class="cap">Ne pas étirer ni déformer</div>
+    </div>
+    <div class="dont">
+      <div class="stage rotate"><img src="assets/logo-color.png" alt=""></div>
+      <div class="cap">Ne pas pivoter</div>
+    </div>
+    <div class="dont">
+      <div class="stage tint"><img src="assets/logo-mono.png" alt=""></div>
+      <div class="cap">Pas de couleur hors charte</div>
+    </div>
+    <div class="dont">
+      <div class="stage busy"><img src="assets/logo-color.png" alt=""></div>
+      <div class="cap">Pas de fond chargé / illisible</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

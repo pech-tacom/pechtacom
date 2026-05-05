@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pech'tacom — Components</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: white; margin: 0; padding: 56px; color: var(--pt-noir); }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  .head { display: flex; align-items: baseline; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+  .head h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: 56px;
+             letter-spacing: -0.03em; margin: 0; }
+  .head .lede { font-family: var(--pt-font-body); color: var(--pt-text-muted);
+                font-size: 18px; max-width: 560px; line-height: 1.5; margin: 0; }
+
+  .section { margin-bottom: 56px; }
+  .section-h { display: flex; align-items: end; justify-content: space-between; margin: 0 0 20px; }
+  .section-h h3 { font-family: var(--pt-font-title); font-size: 28px; font-weight: 800;
+                  letter-spacing: -0.02em; margin: 0; }
+  .section-h .ey { font-family: var(--pt-font-title); font-size: 12px;
+                   letter-spacing: 0.18em; text-transform: uppercase;
+                   color: var(--pt-rose); font-weight: 700; }
+
+  .panel {
+    border: 1px solid var(--pt-border); border-radius: 24px;
+    padding: 36px; background: white;
+  }
+  .panel.warm { background: var(--pt-bg-warm); border-color: transparent; }
+  .panel.dark { background: var(--pt-noir); border-color: transparent; color: white; }
+
+  .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .row + .row { margin-top: 20px; }
+
+  /* ==== BUTTONS ==== */
+  .btn {
+    font-family: var(--pt-font-body);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    padding: 14px 24px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: transform 160ms var(--pt-ease-out), box-shadow 240ms var(--pt-ease-out), background 200ms;
+    text-decoration: none;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--pt-rose); color: white; box-shadow: 0 8px 20px -8px rgba(255,0,61,.5); }
+  .btn-primary:hover { background: #E5002F; box-shadow: 0 12px 28px -8px rgba(255,0,61,.6); }
+  .btn-grad { background: var(--pt-gradient); color: white; box-shadow: 0 10px 24px -8px rgba(255,84,8,.55); }
+  .btn-ghost { background: transparent; color: var(--pt-noir); border: 2px solid var(--pt-noir); padding: 12px 22px; }
+  .btn-ghost:hover { background: var(--pt-noir); color: white; }
+  .btn-soft { background: var(--pt-accent-soft); color: var(--pt-rose); }
+  .btn-dark { background: var(--pt-noir); color: white; }
+  .btn-dark:hover { background: #3a3739; }
+  .btn-sm { font-size: 13px; padding: 9px 16px; }
+  .btn-lg { font-size: 17px; padding: 18px 32px; }
+  .btn .arrow { transition: transform 200ms; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ==== INPUTS ==== */
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 280px; }
+  .field label { font-family: var(--pt-font-body); font-size: 13px; font-weight: 600;
+                 color: var(--pt-text-muted); letter-spacing: 0.02em; }
+  .input {
+    font-family: var(--pt-font-body); font-size: 15px;
+    padding: 14px 18px; border-radius: 14px;
+    border: 1.5px solid var(--pt-border); background: white;
+    color: var(--pt-noir); outline: none;
+    transition: border 160ms;
+  }
+  .input::placeholder { color: var(--pt-text-subtle); }
+  .input:focus { border-color: var(--pt-rose); box-shadow: 0 0 0 4px rgba(255,0,61,.12); }
+  textarea.input { resize: vertical; min-height: 92px; font-family: var(--pt-font-body); }
+
+  .check { display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+           font-family: var(--pt-font-body); font-size: 14px; }
+  .check input { display: none; }
+  .check .box { width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid var(--pt-border);
+                display: flex; align-items: center; justify-content: center; background: white; }
+  .check input:checked + .box { background: var(--pt-rose); border-color: var(--pt-rose); }
+  .check input:checked + .box::after { content: ""; width: 12px; height: 8px;
+    border-left: 2.5px solid white; border-bottom: 2.5px solid white; transform: rotate(-45deg) translate(2px,-2px); }
+
+  .switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+            font-family: var(--pt-font-body); font-size: 14px; }
+  .switch input { display: none; }
+  .switch .track { width: 42px; height: 24px; border-radius: 999px; background: #E5DACC; position: relative;
+                   transition: background 200ms; }
+  .switch .track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+                          background: white; border-radius: 50%; transition: transform 200ms; box-shadow: 0 2px 4px rgba(0,0,0,.18); }
+  .switch input:checked + .track { background: var(--pt-rose); }
+  .switch input:checked + .track::after { transform: translateX(18px); }
+
+  /* ==== BADGES ==== */
+  .badge { display: inline-flex; align-items: center; gap: 6px;
+           font-family: var(--pt-font-body); font-weight: 700; font-size: 12px;
+           letter-spacing: 0.04em; padding: 5px 10px; border-radius: 999px; }
+  .badge.rose { background: var(--pt-accent-soft); color: var(--pt-rose); }
+  .badge.beige { background: var(--pt-bg-warm); color: var(--pt-noir); }
+  .badge.dark { background: var(--pt-noir); color: white; }
+  .badge.grad { background: var(--pt-gradient); color: white; }
+  .badge.outline { background: transparent; color: var(--pt-noir); border: 1.5px solid var(--pt-noir); }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ==== CARDS ==== */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { border-radius: 24px; padding: 28px; border: 1px solid var(--pt-border); background: white;
+          display: flex; flex-direction: column; gap: 14px; }
+  .card .eyb { font-family: var(--pt-font-title); font-size: 11px; letter-spacing: 0.18em;
+               text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
+  .card h4 { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px;
+             letter-spacing: -0.015em; line-height: 1.15; margin: 0; }
+  .card p { font-family: var(--pt-font-body); font-size: 14px; line-height: 1.55; color: var(--pt-text-muted); margin: 0; }
+  .card .meta { display: flex; gap: 8px; align-items: center; font-family: var(--pt-font-body);
+                font-size: 12px; color: var(--pt-text-muted); margin-top: auto; padding-top: 8px; }
+  .card.feature { background: var(--pt-bg-warm); border-color: transparent; }
+  .card.dark { background: var(--pt-noir); color: white; border-color: transparent; }
+  .card.dark p { color: rgba(255,255,255,.72); }
+  .card.dark .eyb { color: var(--pt-jaune); }
+  .card.grad { background: var(--pt-gradient); color: white; border-color: transparent; }
+  .card.grad .eyb, .card.grad p { color: rgba(255,255,255,.92); }
+
+  /* ==== NAV ==== */
+  .nav-demo {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px; border-radius: 999px; background: white;
+    border: 1px solid var(--pt-border);
+  }
+  .nav-demo img { height: 38px; }
+  .nav-demo .links { display: flex; gap: 4px; }
+  .nav-demo .links a { font-family: var(--pt-font-body); font-size: 14px; font-weight: 600;
+                       color: var(--pt-noir); padding: 8px 14px; border-radius: 999px;
+                       text-decoration: none; }
+  .nav-demo .links a.active { background: var(--pt-bg-warm); }
+  .nav-demo .links a:hover { background: var(--pt-bg-warm-2); }
+
+  /* ==== STAT / METRIC ==== */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat { padding: 24px; border-radius: 20px; background: var(--pt-bg-warm); }
+  .stat .num { font-family: var(--pt-font-title); font-weight: 800; font-size: 44px;
+               letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; color: var(--pt-noir); }
+  .stat .num.grad { background: var(--pt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat .lbl { font-family: var(--pt-font-body); font-size: 13px; font-weight: 600; color: var(--pt-text-muted); }
+
+  /* ==== ALERT/CALLOUT ==== */
+  .callouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cl { padding: 18px 22px; border-radius: 18px; display: flex; gap: 14px; align-items: start; }
+  .cl .ico { font-size: 22px; line-height: 1; }
+  .cl b { font-family: var(--pt-font-title); font-weight: 800; display: block; margin-bottom: 2px; }
+  .cl span { font-family: var(--pt-font-body); font-size: 14px; line-height: 1.45; }
+  .cl.success { background: #E8F5E8; color: #145214; }
+  .cl.warn { background: #FFF4D9; color: #6B5400; }
+  .cl.error { background: var(--pt-accent-soft); color: var(--pt-rose); }
+
+  .label { font-family: var(--pt-font-title); font-size: 11px; font-weight: 700;
+           letter-spacing: 0.16em; text-transform: uppercase; color: var(--pt-text-muted);
+           margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <h1>Composants</h1>
+    <p class="lede">Une bibliothèque de blocs réutilisables aux formes douces, avec une signature affirmée : pastilles arrondies, dégradés mesurés, accent rose sur les actions clés.</p>
+  </header>
+
+  <!-- Buttons -->
+  <div class="section">
+    <div class="section-h"><h3>Boutons</h3><div class="ey">primary · ghost · grad</div></div>
+    <div class="panel">
+      <div class="label">Tailles & variantes</div>
+      <div class="row">
+        <button class="btn btn-primary">Démarrer un projet <span class="arrow">→</span></button>
+        <button class="btn btn-grad">Récolter mes idées <span class="arrow">→</span></button>
+        <button class="btn btn-dark">Nous contacter</button>
+        <button class="btn btn-ghost">En savoir plus</button>
+        <button class="btn btn-soft">Voir le brief</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary btn-sm">Petit</button>
+        <button class="btn btn-primary">Standard</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forms -->
+  <div class="section">
+    <div class="section-h"><h3>Formulaires</h3><div class="ey">contact · brief · onboarding</div></div>
+    <div class="panel warm">
+      <div class="row" style="gap: 24px; align-items: end">
+        <div class="field">
+          <label>Votre nom</label>
+          <input class="input" placeholder="Marine Bouchon">
+        </div>
+        <div class="field">
+          <label>E-mail pro</label>
+          <input class="input" placeholder="marine@maison-fruits.fr">
+        </div>
+        <div class="field" style="flex: 1; min-width: 320px">
+          <label>Parlez-nous de votre projet</label>
+          <textarea class="input" placeholder="On lance une nouvelle gamme de confitures bio…"></textarea>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 24px; gap: 28px">
+        <label class="check"><input type="checkbox" checked><span class="box"></span>J'accepte d'être contacté·e</label>
+        <label class="switch"><input type="checkbox" checked><span class="track"></span>Newsletter trimestrielle</label>
+        <button class="btn btn-primary" style="margin-left:auto">Envoyer le brief →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badges -->
+  <div class="section">
+    <div class="section-h"><h3>Badges & étiquettes</h3><div class="ey">tags · status · meta</div></div>
+    <div class="panel">
+      <div class="row">
+        <span class="badge rose"><span class="dot"></span>Nouveau</span>
+        <span class="badge beige">Branding</span>
+        <span class="badge dark">Studio</span>
+        <span class="badge grad">★ Featured</span>
+        <span class="badge outline">Open source</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="section">
+    <div class="section-h"><h3>Cartes</h3><div class="ey">offre · article · case study</div></div>
+    <div class="cards">
+      <div class="card">
+        <div class="eyb">Service</div>
+        <h4>Identité de marque</h4>
+        <p>Logo, charte, déclinaisons. On creuse l'âme avant de dessiner la peau.</p>
+        <div class="meta"><span class="badge rose">à partir de 4 800 €</span><span>·</span><span>3 sem.</span></div>
+      </div>
+      <div class="card feature">
+        <div class="eyb">★ Recommandé</div>
+        <h4>Refonte web complète</h4>
+        <p>Stratégie + UX + design + développement. Le pack tout-en-un pour partir sur des bases saines.</p>
+        <div class="meta"><span class="badge dark">12 000 €</span><span>·</span><span>6–8 sem.</span></div>
+      </div>
+      <div class="card grad">
+        <div class="eyb">Atelier</div>
+        <h4>Brand Sprint · 1 jour</h4>
+        <p>Six heures pour clarifier votre positionnement. Repartez avec un mantra et une short-list de noms.</p>
+        <div class="meta" style="color: rgba(255,255,255,.85)"><span style="background:rgba(255,255,255,.2); color:white" class="badge">1 800 €</span><span>·</span><span>1 jour</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="section">
+    <div class="section-h"><h3>Chiffres</h3><div class="ey">métriques · KPIs</div></div>
+    <div class="stats">
+      <div class="stat"><div class="num grad">+148%</div><div class="lbl">Trafic moyen post-refonte</div></div>
+      <div class="stat"><div class="num">68</div><div class="lbl">Marques accompagnées</div></div>
+      <div class="stat"><div class="num">7,2</div><div class="lbl">Ans d'âge moyen client</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">Faits maison à Toulouse</div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="section">
+    <div class="section-h"><h3>Navigation</h3><div class="ey">header pill</div></div>
+    <div class="panel warm">
+      <div class="nav-demo">
+        <img src="assets/logo-color.png" alt="Pech'tacom">
+        <div class="links">
+          <a href="#" class="active">Studio</a>
+          <a href="#">Services</a>
+          <a href="#">Travaux</a>
+          <a href="#">Journal</a>
+          <a href="#">Contact</a>
+        </div>
+        <button class="btn btn-primary btn-sm">Brief express →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Callouts -->
+  <div class="section">
+    <div class="section-h"><h3>Notifications</h3><div class="ey">toast · inline</div></div>
+    <div class="callouts">
+      <div class="cl success"><div class="ico">✓</div><div><b>Brief reçu</b><span>On revient vers vous sous 48h ouvrées.</span></div></div>
+      <div class="cl warn"><div class="ico">!</div><div><b>Saison chargée</b><span>Nouveaux projets à partir d'avril 2026.</span></div></div>
+      <div class="cl error"><div class="ico">✗</div><div><b>Champ requis</b><span>Merci de préciser votre adresse e-mail.</span></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

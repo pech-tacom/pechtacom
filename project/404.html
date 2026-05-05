@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>404 — Pech'tacom</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background: var(--pt-bg-warm);
+    color: var(--pt-noir);
+    font-family: var(--pt-font-body);
+    display: flex; flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .nav {
+    padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;
+    max-width: 1280px; margin: 0 auto; width: 100%;
+  }
+  .nav img { height: 38px; }
+  .nav a {
+    font-size: 14px; font-weight: 600; color: var(--pt-noir); text-decoration: none;
+    padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--pt-noir);
+  }
+
+  main {
+    flex: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px;
+    max-width: 1216px; margin: 0 auto; padding: 32px 32px 80px; width: 100%;
+  }
+  .copy .ey {
+    font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 16px;
+  }
+  .copy h1 {
+    font-family: var(--pt-font-title); font-weight: 800;
+    font-size: clamp(48px, 6vw, 88px); letter-spacing: -0.035em; line-height: 0.98;
+    margin: 0 0 24px;
+  }
+  .copy h1 em { font-style: italic;
+                background: var(--pt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .copy p { font-size: 18px; line-height: 1.55; color: var(--pt-text-muted);
+            max-width: 480px; margin: 0 0 32px; }
+
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .actions a.primary {
+    background: var(--pt-rose); color: white; font-weight: 700;
+    padding: 16px 26px; border-radius: 999px; text-decoration: none;
+    display: inline-flex; gap: 8px; align-items: center;
+    box-shadow: 0 10px 24px -8px rgba(255,0,61,.5);
+  }
+  .actions a.ghost {
+    color: var(--pt-noir); font-weight: 700; padding: 16px 26px;
+    border-radius: 999px; text-decoration: none; border: 2px solid var(--pt-noir);
+  }
+
+  .suggestions {
+    margin-top: 40px; padding-top: 24px; border-top: 1px dashed rgba(38,36,38,.2);
+  }
+  .suggestions h5 {
+    font-family: var(--pt-font-title); font-weight: 700; font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--pt-text-muted);
+    margin: 0 0 14px;
+  }
+  .suggestions ul { list-style: none; padding: 0; margin: 0;
+                    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+  .suggestions ul a {
+    color: var(--pt-noir); font-size: 14.5px; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .suggestions ul a:hover { color: var(--pt-rose); }
+  .suggestions ul a::before { content: "→"; color: var(--pt-rose); }
+
+  /* Visual: a peach falling */
+  .vis {
+    aspect-ratio: 1; max-width: 520px; margin: 0 auto;
+    background: var(--pt-gradient-radial);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 30px 60px -20px rgba(255,84,8,.4);
+    display: flex; align-items: center; justify-content: center;
+    animation: bob 5s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  .vis::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    border-radius: 50%;
+  }
+  .vis .num {
+    font-family: var(--pt-font-title); font-weight: 800;
+    font-size: clamp(140px, 18vw, 260px); letter-spacing: -0.06em;
+    color: white; line-height: 0.85;
+    text-shadow: 0 8px 28px rgba(122,0,29,.35);
+    position: relative; z-index: 2;
+  }
+  /* shadow puddle */
+  .vis-wrap { position: relative; }
+  .vis-wrap::after {
+    content: ""; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
+    width: 70%; height: 24px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(38,36,38,.2), transparent 70%);
+    animation: shadow 5s ease-in-out infinite;
+  }
+  @keyframes shadow {
+    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: .4; }
+    50% { transform: translateX(-50%) scaleX(0.7); opacity: .25; }
+  }
+
+  footer.mini {
+    padding: 24px 32px; max-width: 1280px; margin: 0 auto; width: 100%;
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    font-size: 13px; color: var(--pt-text-muted);
+    border-top: 1px solid var(--pt-border);
+  }
+  footer.mini a { color: var(--pt-text-muted); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="website.html" style="border:none; padding:0"><img src="assets/logo-color.png" alt="Pech'tacom"></a>
+  <a href="website.html">← Retour à l'accueil</a>
+</nav>
+
+<main>
+  <div class="copy">
+    <div class="ey" style="font-weight: 900; height: 25px; font-size: 20px">Erreur 404</div>
+    <h1>Cette pêche est <em>tombée </em> de l'arbre.</h1>
+    <p>La page que vous cherchez n'existe plus, ou n'a jamais existé. Mais pas de panique : on remet tout dans la cagette.</p>
+    <div class="actions">
+      <a href="website.html" class="primary">Retour à la cagette →</a>
+      <a href="website.html#contact" class="ghost">Nous prévenir</a>
+    </div>
+    <div class="suggestions">
+      <h5>Vous cherchiez peut-être</h5>
+      <ul>
+        <li><a href="website.html#services">Nos services</a></li>
+        <li><a href="website.html#travaux">Travaux récents</a></li>
+        <li><a href="website.html#process">Notre process</a></li>
+        <li><a href="website.html#contact">Contact &amp; brief</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="vis-wrap">
+    <div class="vis">
+      <div class="num">404</div>
+    </div>
+  </div>
+</main>
+
+<footer class="mini">
+  <div>© 2026 Pech'tacom — Le fruit de vos idées</div>
+  <div><a href="website.html">pechtacom.fr</a></div>
+</footer>
+
+</body>
+</html>
