@@ -1,0 +1,155 @@
+/* =========================================================
+   PECH'TACOM — DESIGN TOKENS
+   "Le fruit de vos idées"
+   ========================================================= */
+
+/* ---------- FONTS ---------- */
+/* Mazzard (titres) → Manrope (closest free geometric sans)
+   All Round Gothic (corps) → Nunito (closest free rounded sans) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* ============== COLOR — CORE ============== */
+  --pt-jaune:   #FFDA00;  /* sun, accent, highlights */
+  --pt-orange:  #FF5408;  /* energy, mid-gradient */
+  --pt-rose:    #FF003D;  /* primary brand, CTAs */
+  --pt-beige:   #FFECD9;  /* warm canvas, surfaces */
+  --pt-noir:    #262426;  /* ink, body text */
+  --pt-blanc:   #FFFFFF;
+
+  /* ============== COLOR — GRADIENT ============== */
+  /* The signature Pech'tacom gradient — yellow → orange → rose */
+  --pt-gradient: linear-gradient(135deg, #FFDA00 0%, #FF5408 52%, #FF003D 100%);
+  --pt-gradient-radial: radial-gradient(circle at 25% 30%, #FFDA00 0%, #FF5408 45%, #FF003D 100%);
+  --pt-gradient-soft: linear-gradient(135deg, #FFF4D9 0%, #FFE0CC 50%, #FFD6E0 100%);
+
+  /* ============== COLOR — SEMANTIC ============== */
+  --pt-text:           #262426;
+  --pt-text-muted:     #6B6669;
+  --pt-text-subtle:    #9A9598;
+  --pt-text-on-color:  #FFFFFF;
+
+  --pt-bg:             #FFFFFF;
+  --pt-bg-warm:        #FFECD9;       /* beige canvas */
+  --pt-bg-warm-2:      #FFF7EE;       /* lighter beige */
+  --pt-bg-ink:         #262426;       /* dark sections */
+
+  --pt-border:         #EDE3D6;       /* warm hairline on beige */
+  --pt-border-strong:  #262426;
+  --pt-border-rose:    #FF003D;
+
+  --pt-accent:         #FF003D;       /* primary action */
+  --pt-accent-hover:   #E5002F;
+  --pt-accent-soft:    #FFE5EC;
+
+  /* ============== TYPE — FAMILIES ============== */
+  --pt-font-title: 'Manrope', 'Mazzard', system-ui, sans-serif; /* titles */
+  --pt-font-body:  'Nunito', 'All Round Gothic', system-ui, sans-serif; /* body */
+  --pt-font-mono:  ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ============== TYPE — SCALE ============== */
+  /* Titres (Mazzard / Manrope) — tight, expressive, bold */
+  --pt-display:    clamp(56px, 8vw, 112px);  /* hero */
+  --pt-h1:         clamp(40px, 5vw, 64px);
+  --pt-h2:         clamp(30px, 3.6vw, 44px);
+  --pt-h3:         24px;
+  --pt-h4:         18px;
+  --pt-eyebrow:    13px;
+
+  /* Corps (All Round Gothic / Nunito) */
+  --pt-body-lg:    18px;
+  --pt-body:       16px;
+  --pt-body-sm:    14px;
+  --pt-caption:    12px;
+
+  /* Line-heights */
+  --pt-lh-tight:   1.04;
+  --pt-lh-snug:    1.18;
+  --pt-lh-normal:  1.5;
+  --pt-lh-loose:   1.7;
+
+  /* Letter-spacing */
+  --pt-track-tight: -0.02em;
+  --pt-track-snug:  -0.01em;
+  --pt-track-normal: 0;
+  --pt-track-wide:   0.06em;
+  --pt-track-eyebrow: 0.18em;
+
+  /* Weights */
+  --pt-w-light:   300;
+  --pt-w-regular: 400;
+  --pt-w-medium:  500;
+  --pt-w-semi:    600;
+  --pt-w-bold:    700;
+  --pt-w-black:   800;
+
+  /* ============== SPACING ============== */
+  --pt-s-1:  4px;
+  --pt-s-2:  8px;
+  --pt-s-3:  12px;
+  --pt-s-4:  16px;
+  --pt-s-5:  24px;
+  --pt-s-6:  32px;
+  --pt-s-7:  48px;
+  --pt-s-8:  64px;
+  --pt-s-9:  96px;
+  --pt-s-10: 128px;
+
+  /* ============== RADIUS ============== */
+  --pt-r-xs:    4px;
+  --pt-r-sm:    8px;
+  --pt-r-md:    14px;
+  --pt-r-lg:    22px;
+  --pt-r-xl:    32px;
+  --pt-r-2xl:   48px;
+  --pt-r-pill:  999px;
+
+  /* ============== SHADOWS ============== */
+  --pt-shadow-xs:  0 1px 2px rgba(38, 36, 38, 0.06);
+  --pt-shadow-sm:  0 4px 14px rgba(38, 36, 38, 0.08);
+  --pt-shadow-md:  0 12px 28px -8px rgba(38, 36, 38, 0.14);
+  --pt-shadow-lg:  0 24px 56px -16px rgba(38, 36, 38, 0.22);
+  --pt-shadow-glow-rose: 0 12px 32px -8px rgba(255, 0, 61, 0.32);
+  --pt-shadow-glow-warm: 0 18px 48px -16px rgba(255, 84, 8, 0.32);
+
+  /* ============== MOTION ============== */
+  --pt-ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --pt-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --pt-d-fast:     160ms;
+  --pt-d-base:     240ms;
+  --pt-d-slow:     420ms;
+}
+
+/* ---------- BASE TYPE ---------- */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--pt-font-body);
+  font-size: var(--pt-body);
+  line-height: var(--pt-lh-normal);
+  color: var(--pt-text);
+  background: var(--pt-bg);
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6, .pt-title {
+  font-family: var(--pt-font-title);
+  font-weight: var(--pt-w-black);
+  letter-spacing: var(--pt-track-tight);
+  line-height: var(--pt-lh-tight);
+  text-wrap: balance;
+}
+
+/* utility classes for fast prototyping */
+.pt-eyebrow {
+  font-family: var(--pt-font-title);
+  font-weight: var(--pt-w-bold);
+  font-size: var(--pt-eyebrow);
+  letter-spacing: var(--pt-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--pt-rose);
+}
+.pt-grad-text {
+  background: var(--pt-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
