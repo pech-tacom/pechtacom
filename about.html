@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pech'tacom — Le studio, c'est Tim et Chloé. Deux cerveaux, un seul verger. Découvrez l'histoire et les valeurs de l'agence créative basée à Strasbourg.">
+  <title>À propos — Pech'tacom</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--pt-bg); color: var(--pt-noir); font-family: var(--pt-font-body); }
+
+    /* ============ NAV ============ */
+    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 16px; z-index: 50; }
+    .nav {
+      max-width: 1216px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 14px 12px 24px; border-radius: 999px;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+      border: 1px solid rgba(38,36,38,.08);
+      box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
+    }
+    .nav img { height: 38px; }
+    .nav .links { display: flex; gap: 4px; }
+    .nav .links a { font-size: 14px; font-weight: 600; color: var(--pt-noir); padding: 8px 14px; border-radius: 999px; text-decoration: none; }
+    .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
+    .nav .cta { background: var(--pt-rose); color: white; font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 999px; text-decoration: none; }
+
+    /* ============ HERO ============ */
+    .hero { padding: 72px 32px 80px; text-align: center; max-width: 960px; margin: 0 auto; }
+    .hero .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(48px, 6vw, 88px); letter-spacing: -0.035em; line-height: 0.98; margin: 0 0 24px; }
+    .hero h1 em { font-style: italic; background: var(--pt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero .lede { font-size: 20px; line-height: 1.55; color: var(--pt-text-muted); max-width: 720px; margin: 0 auto; }
+
+    /* ============ PORTRAITS ============ */
+    section.team { padding: 80px 32px; background: var(--pt-bg-warm); }
+    .team-grid { max-width: 1216px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .portrait { background: white; border-radius: 32px; overflow: hidden; display: flex; flex-direction: column; }
+    .portrait .portrait-img { aspect-ratio: 4/3; overflow: hidden; position: relative; background: var(--pt-gradient-radial); }
+    .portrait .portrait-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .portrait .portrait-img .no-photo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--pt-font-title); font-weight: 800; font-size: 80px; color: rgba(255,255,255,.4); }
+    .portrait .body { padding: 32px; }
+    .portrait .role-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pt-rose); margin-bottom: 12px; }
+    .portrait h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: 36px; letter-spacing: -0.02em; margin: 0 0 8px; line-height: 1.05; }
+    .portrait .role-title { font-size: 14px; font-weight: 600; color: var(--pt-text-muted); margin-bottom: 20px; }
+    .portrait p { font-size: 15px; line-height: 1.65; color: var(--pt-text-muted); margin: 0 0 20px; }
+    .portrait blockquote { font-family: var(--pt-font-title); font-weight: 700; font-style: italic; font-size: 19px; letter-spacing: -0.01em; line-height: 1.3; color: var(--pt-noir); margin: 0; padding: 16px 20px; border-left: 3px solid var(--pt-rose); background: var(--pt-bg-warm); border-radius: 0 12px 12px 0; }
+    .portrait .fun-fact { display: flex; align-items: start; gap: 12px; margin-top: 16px; padding: 14px 16px; background: var(--pt-bg-warm); border-radius: 14px; font-size: 13.5px; line-height: 1.5; color: var(--pt-text-muted); }
+    .portrait .fun-fact .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+    .portrait.dark { background: var(--pt-noir); color: white; }
+    .portrait.dark .role-tag { color: var(--pt-jaune); }
+    .portrait.dark h2 { color: white; }
+    .portrait.dark .role-title { color: rgba(255,255,255,.6); }
+    .portrait.dark p { color: rgba(255,255,255,.72); }
+    .portrait.dark blockquote { color: white; background: rgba(255,255,255,.08); border-left-color: var(--pt-jaune); }
+    .portrait.dark .fun-fact { background: rgba(255,255,255,.07); color: rgba(255,255,255,.72); }
+
+    /* ============ STORY ============ */
+    section.story { padding: 96px 32px; background: white; }
+    .story-grid { max-width: 1216px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+    .story-grid .aside { position: sticky; top: 120px; }
+    .story-grid .aside .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 16px; }
+    .story-grid h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(36px, 4vw, 52px); letter-spacing: -0.025em; line-height: 1.05; margin: 0 0 20px; }
+    .story-grid .aside p { font-size: 15px; line-height: 1.6; color: var(--pt-text-muted); margin: 0; }
+    .story-body p { font-size: 18px; line-height: 1.75; color: var(--pt-text-muted); margin: 0 0 24px; }
+    .story-body p:last-child { margin-bottom: 0; }
+    .story-body .pull { font-family: var(--pt-font-title); font-weight: 800; font-style: italic; font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -0.02em; line-height: 1.15; color: var(--pt-noir); margin: 40px 0; }
+    .story-body .pull em { font-style: normal; background: var(--pt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* ============ VALEURS ============ */
+    section.values { padding: 96px 32px; background: var(--pt-noir); color: white; }
+    .values-head { max-width: 1216px; margin: 0 auto 56px; }
+    .values-head .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); font-weight: 700; margin-bottom: 16px; }
+    .values-head h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(36px, 4vw, 56px); letter-spacing: -0.025em; line-height: 1.04; margin: 0 0 16px; max-width: 740px; }
+    .values-head p { font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.72); max-width: 680px; margin: 0; }
+    .values-pillars { max-width: 1216px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .pillar { background: rgba(255,255,255,.06); border-radius: 24px; padding: 32px; border: 1px solid rgba(255,255,255,.08); }
+    .pillar .n { font-family: var(--pt-font-title); font-weight: 800; font-size: 48px; letter-spacing: -0.04em; color: var(--pt-jaune); line-height: 1; margin-bottom: 16px; }
+    .pillar h3 { font-family: var(--pt-font-title); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: white; margin: 0 0 12px; line-height: 1.1; }
+    .pillar p { font-size: 14.5px; line-height: 1.65; color: rgba(255,255,255,.65); margin: 0; }
+
+    /* ============ FAQ ============ */
+    section.faq { padding: 96px 32px; background: var(--pt-bg-warm); }
+    .faq-grid { max-width: 1216px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+    .faq-grid .aside .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 16px; }
+    .faq-grid h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -0.025em; line-height: 1.05; margin: 0 0 12px; }
+    .faq-grid .aside p { font-size: 15px; color: var(--pt-text-muted); line-height: 1.6; margin: 0; }
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+    .faq-item { background: white; border-radius: 16px; overflow: hidden; }
+    .faq-item summary { list-style: none; cursor: pointer; font-family: var(--pt-font-title); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; color: var(--pt-noir); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-size: 22px; font-weight: 400; color: var(--pt-rose); flex-shrink: 0; }
+    .faq-item[open] summary::after { content: "–"; }
+    .faq-item .answer { padding: 0 24px 20px; font-size: 15px; line-height: 1.65; color: var(--pt-text-muted); }
+
+    /* ============ CTA ============ */
+    section.cta { padding: 96px 32px; background: white; }
+    .cta-card { max-width: 1216px; margin: 0 auto; background: var(--pt-gradient); color: white; border-radius: 40px; padding: 80px 64px; text-align: center; position: relative; overflow: hidden; }
+    .cta-card::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,.1) 1px, transparent 1.5px); background-size: 28px 28px; }
+    .cta-card > * { position: relative; z-index: 2; }
+    .cta-card .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; opacity: .85; margin-bottom: 16px; }
+    .cta-card h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(36px, 5vw, 72px); letter-spacing: -0.035em; line-height: 0.98; margin: 0 0 20px; }
+    .cta-card p { font-size: 18px; line-height: 1.55; opacity: .92; max-width: 560px; margin: 0 auto 36px; }
+    .cta-card .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta-card .actions a.primary { background: white; color: var(--pt-rose); font-weight: 700; font-size: 16px; padding: 18px 32px; border-radius: 999px; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; box-shadow: 0 10px 32px -8px rgba(38,36,38,.3); }
+    .cta-card .actions a.ghost { color: white; font-weight: 700; font-size: 16px; padding: 18px 32px; border-radius: 999px; text-decoration: none; border: 2px solid rgba(255,255,255,.6); }
+
+    /* ============ FOOTER ============ */
+    footer { background: var(--pt-noir); color: white; padding: 72px 32px 40px; }
+    .footer-grid { max-width: 1216px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .footer-grid img { height: 38px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+    .footer-grid .tagline { font-family: var(--pt-font-title); font-weight: 500; font-style: italic; font-size: 18px; opacity: .85; max-width: 320px; line-height: 1.5; }
+    .footer-col h5 { font-family: var(--pt-font-title); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); margin: 0 0 16px; }
+    .footer-col a { display: block; color: rgba(255,255,255,.85); text-decoration: none; font-size: 14.5px; padding: 6px 0; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { max-width: 1216px; margin: 0 auto; padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.6); }
+    .footer-bottom .legal { display: flex; gap: 20px; }
+    .footer-bottom a { color: rgba(255,255,255,.6); text-decoration: none; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .values-pillars { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-wrap { padding: 16px 16px 0; }
+      .nav .links { display: none; }
+      .hero { padding: 48px 16px 56px; }
+      section.team, section.story, section.values, section.faq, section.cta { padding: 64px 16px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .story-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+      .story-grid .aside { position: static; }
+      .values-pillars { grid-template-columns: 1fr; }
+      .cta-card { padding: 48px 24px; border-radius: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html"><img src="assets/logo-color.png" alt="Pech'tacom"></a>
+    <div class="links">
+      <a href="index.html">Studio</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#travaux">Travaux</a>
+      <a href="index.html#process">Process</a>
+      <a href="about.html" class="active">À propos</a>
+    </div>
+    <a href="index.html#contact" class="cta">Brief express →</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="ey">★ L'équipe · Strasbourg · 2026</div>
+  <h1>Deux cerveaux,<br>un seul <em>verger.</em></h1>
+  <p class="lede">Derrière Pech'tacom, il y a Tim et Chloé. Pas de grand groupe, pas de stagiaires invisibles — juste deux passionnés qui font le boulot eux-mêmes, du brief à la livraison.</p>
+</div>
+
+<!-- PORTRAITS -->
+<section class="team">
+  <div class="team-grid">
+
+    <!-- CHLOÉ -->
+    <div class="portrait">
+      <div class="portrait-img">
+        <img src="assets/chloe.jpg" alt="Chloé, Directrice artistique" onerror="this.style.display='none'">
+        <div class="no-photo">C</div>
+      </div>
+      <div class="body">
+        <div class="role-tag">★ Directrice artistique</div>
+        <h2>Chloé</h2>
+        <div class="role-title">Diplômée d'e-Artsup · L'œil qui ne rate rien</div>
+        <p>Chloé a forgé son regard créatif lors de projets scolaires et sur le terrain — notamment auprès des pompiers d'Innenheim, dans les coulisses d'un cirque, au cœur d'une agence de communication. Elle comprend instinctivement les détails qui font la différence entre un logo qui marque et un logo qu'on oublie.</p>
+        <div class="fun-fact">
+          <span class="icon">🐾</span>
+          <span>Chloé est <em>complètement</em> dingue des animaux. Il paraît qu'elle a déjà remplacé une réunion de brief par une session câlins avec son chat. On ne confirme pas. On ne dément pas.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIM -->
+    <div class="portrait dark">
+      <div class="portrait-img">
+        <img src="assets/tim.jpg" alt="Tim, Photographe & Vidéaste" onerror="this.style.display='none'">
+        <div class="no-photo">T</div>
+      </div>
+      <div class="body">
+        <div class="role-tag">★ Photographe &amp; Vidéaste</div>
+        <h2>Tim</h2>
+        <div class="role-title">Autodidacte · Formé au montage vidéo · Storyteller</div>
+        <p>Tim a construit son regard image par image, en autodidacte passionné, affiné par une formation au montage vidéo. Il capture ce que les autres ne voient pas encore — et le transforme en quelque chose qui raconte une histoire. L'art de storyteller, c'est son pilier.</p>
+        <blockquote>« Se challenger pour mieux se comprendre »</blockquote>
+        <div class="fun-fact">
+          <span class="icon">🏃</span>
+          <span>Tim est un fou du challenge — au sens propre comme au figuré. Marathons, trails, projets impossibles à 3h du matin. Il court dans tous les sens, et c'est exactement ce qu'on aime chez lui.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-grid">
+    <div class="aside">
+      <div class="ey">Notre histoire</div>
+      <h2>Comment Pech'tacom est né d'une seule conversation.</h2>
+      <p>Spoiler : il y avait probablement du café.</p>
+    </div>
+    <div class="story-body">
+      <p>Tout a commencé par une question : <strong>qu'est-ce qui fait qu'une identité visuelle marque vraiment les esprits ?</strong></p>
+      <p>La réponse est venue naturellement, au fil d'une conversation entre Tim et Chloé. Une bonne communication ne se contente pas d'être vue. Elle raconte une histoire. Elle donne envie. Elle fait rêver. Elle nous donne l'impression que cette marque a été faite pour nous. Qu'elle nous inspire, qu'elle nous motive.</p>
+      <div class="pull">Qu'elle nous donne<br><em>la pêche.</em></div>
+      <p>Chloé a levé les yeux. Et elle a dit : <strong>« Pech'tacom. »</strong></p>
+      <p>Le nom était trouvé. L'aventure pouvait commencer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALEURS -->
+<section class="values">
+  <div class="values-head">
+    <div class="ey">Nos valeurs</div>
+    <h2>Notre façon de travailler ? Simple.</h2>
+    <p>Écouter. Comprendre. Exécuter. Avant de créer, nous prenons le temps de vous connaître — vos envies, vos valeurs, votre histoire. Parce que le meilleur contenu est celui qui vous ressemble vraiment.</p>
+  </div>
+  <div class="values-pillars">
+    <div class="pillar">
+      <div class="n">01</div>
+      <h3>Écouter d'abord</h3>
+      <p>On ne dessine rien avant de comprendre. On pose des questions, on creuse, on cherche ce qui vous rend unique. Votre histoire, pas la nôtre.</p>
+    </div>
+    <div class="pillar">
+      <div class="n">02</div>
+      <h3>Comprendre en profondeur</h3>
+      <p>Votre marché, vos concurrents, vos clients — on fait le tour avant de prendre le pinceau. Un bon diagnostic, ça évite bien des allers-retours.</p>
+    </div>
+    <div class="pillar">
+      <div class="n">03</div>
+      <h3>Exécuter avec soin</h3>
+      <p>Pas de livrables bâclés, pas de templates recyclés. Chaque projet est fait à la main, avec attention aux détails que vous ne verrez peut-être pas — mais que vous ressentirez.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-grid">
+    <div class="aside">
+      <div class="ey">Questions fréquentes</div>
+      <h2>On a les réponses. Même aux questions bizarres.</h2>
+      <p>Et si on n'a pas la réponse, on l'invente. (Non. On est sérieux, promis.)</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Vous êtes basés où ?</summary>
+        <div class="answer">À Strasbourg, entre la cathédrale et la Winstub. On se déplace aussi — le train, ça nous connaît. Et la visio, encore plus.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Vous travaillez avec des particuliers ?</summary>
+        <div class="answer">Absolument. Mariage, événement, portrait, projet personnel — si ça mérite d'être immortalisé ou affiché fièrement, on est là. Que vous soyez un couple, un restaurateur, une PME ou un escape game qui veut captiver dès la première image.</div>
+      </details>
+      <details class="faq-item">
+        <summary>C'est quoi vos délais ?</summary>
+        <div class="answer">Entre 3 et 6 semaines selon le projet. Spoiler : les bons fruits ne se cueillent pas verts. On préfère prendre le temps que d'expédier quelque chose dont vous ne seriez pas fiers — ni nous.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Combien ça coûte ?</summary>
+        <div class="answer">Nos tarifs démarrent à 485 €. Le vrai luxe, c'est d'avoir quelque chose qui vous ressemble vraiment — pas un template sorti d'un abonnement Canva. On vous fait un devis sur mesure, sans engagement.</div>
+      </details>
+      <details class="faq-item">
+        <summary>On peut vous apporter des croissants en réunion ?</summary>
+        <div class="answer">Non seulement vous pouvez, mais c'est fortement recommandé. Les chocolatines aussi. On est ouverts à la discussion sur la terminologie.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-card">
+    <div class="ey">On démarre quand vous voulez</div>
+    <h2>Prêt à donner<br>la pêche à votre marque ?</h2>
+    <p>Une demi-heure de discussion suffit souvent à voir si on peut faire quelque chose de bien ensemble. Pas de chatbot, pas de commercial — Tim ou Chloé vous répond personnellement.</p>
+    <div class="actions">
+      <a href="index.html#contact" class="primary">Envoyer un brief →</a>
+      <a href="index.html#services" class="ghost">Voir nos services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="assets/logo-color.png" alt="Pech'tacom">
+      <p class="tagline">Agence de communication, basé à Strasbourg depuis 2026.<br>Le fruit de vos idées.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Agence</h5>
+      <a href="about.html">À propos</a>
+      <a href="#">Manifeste</a>
+      <a href="#">Recrutement</a>
+      <a href="#">Presse</a>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="index.html#services">Identité</a>
+      <a href="index.html#services">Photographie</a>
+      <a href="index.html#services">Vidéo</a>
+      <a href="index.html#services">Pack complet</a>
+    </div>
+    <div class="footer-col">
+      <h5>Suivez-nous</h5>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Behance</a>
+      <a href="#">Newsletter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Pech'tacom · Strasbourg</div>
+    <div class="legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+      <a href="404.html">404</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
