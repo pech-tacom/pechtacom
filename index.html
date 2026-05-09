@@ -103,30 +103,14 @@
     .float-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: #2D8A4F; }
 
     /* ============ MARQUEE ============ */
-<<<<<<< HEAD
-    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px;
-      padding: 24px 32px 56px; border-top: 1px solid var(--pt-border);
-      margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
+    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px; padding: 24px 0 56px; }
+    .marquee-label {
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--pt-rose); font-weight: 700;
       padding-left: max(32px, calc((100vw - 1216px) / 2 + 32px));
+      margin-bottom: 20px;
     }
-    .marquee-label-wrap {
-      max-width: 1216px; margin: 0 auto 20px;
-      display: flex; align-items: end; justify-content: space-between; gap: 32px;
-    }
-    .marquee-label h2 { font-family: var(--pt-font-title);
-      font-weight: 800; 
-      font-size: clamp(36px, 4vw, 56px); 
-      letter-spacing: -0.025em; 
-      line-height: 1.04; 
-      margin: 0; 
-      max-width: 720px;
-    }
-=======
-    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px; padding: 24px 32px 56px; }
-    .marquee-label-wrap { max-width: 1216px; margin: 0 auto 20px; }
->>>>>>> refs/remotes/origin/main
-    .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
-    .marquee { display: flex; overflow: hidden; margin-left: -32px; margin-right: -32px; }
+    .marquee { display: flex; overflow: hidden; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
     .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
     .marquee-track span { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--pt-text-muted); white-space: nowrap; }
@@ -354,7 +338,7 @@
 
 <!-- MARQUEE -->
 <div class="marquee-section">
-  <div class="marquee-label">Ils mûrissent avec nous</div>
+  <div class="marquee-label">Ils ont mûri avec nous</div>
   <div class="marquee">
     <div class="marquee-inner">
       <div class="marquee-track">
