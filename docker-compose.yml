@@ -1,0 +1,9 @@
+services:
+  dev:
+    build: .
+    ports:
+      - "3000:3000"   # site
+      - "3001:3001"   # browser-sync UI
+    volumes:
+      - .:/app
+    restart: unless-stopped
