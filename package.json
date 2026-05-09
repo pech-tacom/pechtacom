@@ -1,0 +1,13 @@
+{
+  "name": "pechtacom-dev",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "express": "^4.18.2",
+    "ws": "^8.16.0"
+  }
+}
