@@ -107,6 +107,19 @@
       padding: 24px 0 56px; border-top: 1px solid var(--pt-border);
       margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
     }
+    .marquee-label {
+      max-width: 1216px; margin: 0 auto 20px;
+      display: flex; align-items: end; justify-content: space-between; gap: 32px;
+    }
+    .marquee-label h2 { font-family: var(--pt-font-title);
+      font-weight: 800; 
+      font-size: clamp(36px, 4vw, 56px); 
+      letter-spacing: -0.025em; 
+      line-height: 1.04; 
+      margin: 0; 
+      max-width: 720px;
+      padding-right: 32px;
+    }
     .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
     .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
@@ -114,7 +127,8 @@
     @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
     /* ============ SERVICES ============ */
-    section.services { padding: 80px 32px; background: var(--pt-bg-warm); }
+    section.services { 
+      padding: 80px 32px; background: var(--pt-bg-warm); }
     .services-head {
       max-width: 1216px; margin: 0 auto 40px;
       display: flex; align-items: end; justify-content: space-between; gap: 32px;
@@ -232,7 +246,7 @@
       border-bottom: 1px solid rgba(255,255,255,.1);
 
     }
-    .footer-grid img { height: 160px; margin-bottom: -50px; }
+    .footer-grid img { height: 160px; margin-bottom: -50px; margin-top: -50px; }
     .footer-grid .tagline { font-family: var(--pt-font-title); font-weight: 500; font-style: italic; font-size: 18px; opacity: .85; max-width: 320px; line-height: 1.5; }
     .footer-col h5 { font-family: var(--pt-font-title); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); margin: 0 0 16px; }
     .footer-col a { display: block; color: rgba(255,255,255,.85); text-decoration: none; font-size: 14.5px; padding: 6px 0; }
@@ -333,17 +347,16 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee">
+<div class="marquee-label">Ils mûrissent avec nous</div>
   <div class="marquee-inner">
     <div class="marquee-track" aria-hidden="false">
-      <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
       <span>Bomb Squad</span><span>·</span>
       <span>Virtual Room</span><span>·</span>
       <span>Cirk'étoile</span><span>·</span>
       <span>Ordre des Experts-Comptables</span><span>·</span>
       <span>Le Comptoir Pyrénéen</span><span>·</span>
       <span>Les Halles d'Auch</span><span>·</span>
-      <span>Pépin &amp; Cie</span><span>·</span>
+      <span>Pépin &amp; Cie</span><span>
     </div>
     <div class="marquee-track" aria-hidden="true">
       <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
