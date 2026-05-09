@@ -103,9 +103,9 @@
       padding: 24px 0 56px; border-top: 1px solid var(--pt-border);
       margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
     }
-    .marquee-label { padding: 0 32px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-text-muted); font-weight: 600; flex-shrink: 0; }
+    .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
-    .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 22s linear infinite; }
+    .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
     .marquee-track span { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--pt-text-muted); white-space: nowrap; }
     @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
@@ -329,9 +329,9 @@
 
 <!-- MARQUEE -->
 <div class="marquee">
-  <div class="marquee-label">Ils mûrissent avec nous</div>
   <div class="marquee-inner">
     <div class="marquee-track" aria-hidden="false">
+      <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
       <span>Bomb Squad</span><span>·</span>
       <span>Virtual Room</span><span>·</span>
       <span>Cirk'étoile</span><span>·</span>
@@ -341,6 +341,7 @@
       <span>Pépin &amp; Cie</span><span>·</span>
     </div>
     <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
       <span>Bomb Squad</span><span>·</span>
       <span>Virtual Room</span><span>·</span>
       <span>Cirk'étoile</span><span>·</span>
