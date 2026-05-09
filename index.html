@@ -15,19 +15,19 @@
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
     /* ============ NAV ============ */
-    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 16px; z-index: 50; }
+    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 10px; z-index: 50; }
     .nav {
       max-width: 1216px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 14px 12px 24px; border-radius: 999px;
+      padding: 0px 14px 0px 24px; border-radius: 999px;
       background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
       border: 1px solid rgba(38,36,38,.08);
       box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
     }
-    .nav img { height: 38px; }
+    .nav img { height: 80px; }
     .nav .links { display: flex; gap: 4px; }
     .nav .links a {
-      font-size: 14px; font-weight: 600; color: var(--pt-noir);
+      font-size: 16px; font-weight: 600; color: var(--pt-noir);
       padding: 8px 14px; border-radius: 999px; text-decoration: none;
     }
     .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
@@ -224,13 +224,15 @@
     .cta-card form button:hover { background: #3a3638; }
 
     /* ============ FOOTER ============ */
-    footer { background: var(--pt-noir); color: white; padding: 72px 32px 40px; }
+    footer { background: var(--pt-noir); color: white; padding: 50px 32px 40px; }
     .footer-grid {
       max-width: 1216px; margin: 0 auto;
       display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
-      padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.1);
+      padding-bottom: -30px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+
     }
-    .footer-grid img { height: 64px; margin-bottom: 16px; }
+    .footer-grid img { height: 160px; margin-bottom: -50px; }
     .footer-grid .tagline { font-family: var(--pt-font-title); font-weight: 500; font-style: italic; font-size: 18px; opacity: .85; max-width: 320px; line-height: 1.5; }
     .footer-col h5 { font-family: var(--pt-font-title); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); margin: 0 0 16px; }
     .footer-col a { display: block; color: rgba(255,255,255,.85); text-decoration: none; font-size: 14.5px; padding: 6px 0; }
