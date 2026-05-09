@@ -15,19 +15,19 @@
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
     /* ============ NAV ============ */
-    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 16px; z-index: 50; }
+    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 10px; z-index: 50; }
     .nav {
       max-width: 1216px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 14px 12px 24px; border-radius: 999px;
+      padding: 0px 14px 0px 24px; border-radius: 999px;
       background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
       border: 1px solid rgba(38,36,38,.08);
       box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
     }
-    .nav img { height: 38px; }
+    .nav img { height: 80px; }
     .nav .links { display: flex; gap: 4px; }
     .nav .links a {
-      font-size: 14px; font-weight: 600; color: var(--pt-noir);
+      font-size: 16px; font-weight: 600; color: var(--pt-noir);
       padding: 8px 14px; border-radius: 999px; text-decoration: none;
     }
     .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
@@ -108,6 +108,19 @@
       margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
       padding-left: 32px;
     }
+    .marquee-label {
+      max-width: 1216px; margin: 0 auto 20px;
+      display: flex; align-items: end; justify-content: space-between; gap: 32px;
+    }
+    .marquee-label h2 { font-family: var(--pt-font-title);
+      font-weight: 800; 
+      font-size: clamp(36px, 4vw, 56px); 
+      letter-spacing: -0.025em; 
+      line-height: 1.04; 
+      margin: 0; 
+      max-width: 720px;
+      padding-right: 32px;
+    }
     .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
     .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
@@ -115,7 +128,8 @@
     @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
     /* ============ SERVICES ============ */
-    section.services { padding: 80px 32px; background: var(--pt-bg-warm); }
+    section.services { 
+      padding: 80px 32px; background: var(--pt-bg-warm); }
     .services-head {
       max-width: 1216px; margin: 0 auto 40px;
       display: flex; align-items: end; justify-content: space-between; gap: 32px;
@@ -225,13 +239,15 @@
     .cta-card form button:hover { background: #3a3638; }
 
     /* ============ FOOTER ============ */
-    footer { background: var(--pt-noir); color: white; padding: 72px 32px 40px; }
+    footer { background: var(--pt-noir); color: white; padding: 50px 32px 40px; }
     .footer-grid {
       max-width: 1216px; margin: 0 auto;
       display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
-      padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.1);
+      padding-bottom: -30px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+
     }
-    .footer-grid img { height: 64px; margin-bottom: 16px; }
+    .footer-grid img { height: 160px; margin-bottom: -50px; margin-top: -50px; }
     .footer-grid .tagline { font-family: var(--pt-font-title); font-weight: 500; font-style: italic; font-size: 18px; opacity: .85; max-width: 320px; line-height: 1.5; }
     .footer-col h5 { font-family: var(--pt-font-title); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); margin: 0 0 16px; }
     .footer-col a { display: block; color: rgba(255,255,255,.85); text-decoration: none; font-size: 14.5px; padding: 6px 0; }
@@ -310,7 +326,7 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <div class="ey">★ AGENCE DE COMMUNICATION · STRASBOURG · 2026</div>
+      <div class="ey">★ AGENCE DE COMMUNICATION · STRASBOURG</div>
       <h1>Le <span class="couldeg"><em>fruit</span></em><br>de vos idées</h1>
       <p class="lede">De vos événements les plus précieux à votre image de marque, nous capturons, créons et sublimions ce qui vous ressemble.</p>
       <div class="actions">
@@ -332,17 +348,16 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee">
+<div class="marquee-label">Ils mûrissent avec nous</div>
   <div class="marquee-inner">
     <div class="marquee-track" aria-hidden="false">
-      <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
       <span>Bomb Squad</span><span>·</span>
       <span>Virtual Room</span><span>·</span>
       <span>Cirk'étoile</span><span>·</span>
       <span>Ordre des Experts-Comptables</span><span>·</span>
       <span>Le Comptoir Pyrénéen</span><span>·</span>
       <span>Les Halles d'Auch</span><span>·</span>
-      <span>Pépin &amp; Cie</span><span>·</span>
+      <span>Pépin &amp; Cie</span><span>
     </div>
     <div class="marquee-track" aria-hidden="true">
       <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
