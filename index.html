@@ -108,19 +108,6 @@
       margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
       padding-left: max(32px, calc((100vw - 1216px) / 2 + 32px));
     }
-    .marquee-label {
-      max-width: 1216px; margin: 0 auto 20px;
-      display: flex; align-items: end; justify-content: space-between; gap: 32px;
-    }
-    .marquee-label h2 { font-family: var(--pt-font-title);
-      font-weight: 800; 
-      font-size: clamp(36px, 4vw, 56px); 
-      letter-spacing: -0.025em; 
-      line-height: 1.04; 
-      margin: 0; 
-      max-width: 720px;
-      padding-right: 32px;
-    }
     .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
     .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
@@ -348,25 +335,27 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-label">Ils ont mûri avec nous</div>
+<div class="marquee">
   <div class="marquee-inner">
-    <div class="marquee-track" aria-hidden="false">
+    <div class="marquee-track">
+      <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
       <span>Bomb Squad</span><span>·</span>
       <span>Virtual Room</span><span>·</span>
-      <span>Cirk'&toile</span><span>·</span>
-      <span>CROEC</span><span>·</span>
-      <span>Pharel Green</span><span>·</span>
-      <span>Restaurant Mandala</span><span>·</span>
-      <span>Le mariage de Noé & Amandine</span><span>·</span>
+      <span>Cirk'étoile</span><span>·</span>
+      <span>Ordre des Experts-Comptables</span><span>·</span>
+      <span>Le Comptoir Pyrénéen</span><span>·</span>
+      <span>Les Halles d'Auch</span><span>·</span>
+      <span>Pépin &amp; Cie</span><span>·</span>
     </div>
     <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-label">Ils mûrissent avec nous</span><span>·</span>
       <span>Bomb Squad</span><span>·</span>
       <span>Virtual Room</span><span>·</span>
-      <span>Cirk'&toile</span><span>·</span>
-      <span>CROEC</span><span>·</span>
-      <span>Pharel Green</span><span>·</span>
-      <span>Restaurant Mandala</span><span>·</span>
-      <span>Le mariage de Noé & Amandine</span><span>·</span>
+      <span>Cirk'étoile</span><span>·</span>
+      <span>Ordre des Experts-Comptables</span><span>·</span>
+      <span>Le Comptoir Pyrénéen</span><span>·</span>
+      <span>Les Halles d'Auch</span><span>·</span>
+      <span>Pépin &amp; Cie</span><span>·</span>
     </div>
   </div>
 </div>
