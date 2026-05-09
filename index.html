@@ -103,14 +103,10 @@
     .float-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: #2D8A4F; }
 
     /* ============ MARQUEE ============ */
-    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px; padding: 24px 0 56px; }
-    .marquee-label {
-      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--pt-rose); font-weight: 700;
-      padding-left: max(32px, calc((100vw - 1216px) / 2 + 32px));
-      margin-bottom: 20px;
-    }
-    .marquee { display: flex; overflow: hidden; }
+    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px; padding: 24px 32px 56px; }
+    .marquee-label-wrap { max-width: 1216px; margin: 0 auto 20px; }
+    .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
+    .marquee { display: flex; overflow: hidden; margin-left: -32px; margin-right: -32px; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
     .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
     .marquee-track span { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--pt-text-muted); white-space: nowrap; }
@@ -267,8 +263,8 @@
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-vis { order: -1; max-width: 380px; margin: 0 auto; }
 
-      .marquee { gap: 24px; }
-      .marquee-label { padding: 0 16px; }
+      .marquee-section { padding-left: 16px; padding-right: 16px; }
+      .marquee { margin-left: -16px; margin-right: -16px; }
 
       section.services, section.process, section.work, section.quote, section.cta { padding: 64px 16px; }
       .services-head { flex-direction: column; }
@@ -338,7 +334,9 @@
 
 <!-- MARQUEE -->
 <div class="marquee-section">
-  <div class="marquee-label">Ils mûrissent avec nous</div>
+  <div class="marquee-label-wrap">
+    <div class="marquee-label">Ils mûrissent avec nous</div>
+  </div>
   <div class="marquee">
     <div class="marquee-inner">
       <div class="marquee-track">
