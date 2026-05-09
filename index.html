@@ -177,7 +177,16 @@
     .case .yr { font-family: ui-monospace, monospace; font-size: 12px; opacity: .85; }
     .case h4 { font-family: var(--pt-font-title); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; line-height: 1.08; margin: 0; }
     .case .sub { font-size: 14px; line-height: 1.5; opacity: .85; margin-top: 8px; }
-    .case-1 { grid-column: 1; grid-row: 1 / span 2; background: linear-gradient(160deg, #FF003D, #7A001D); min-height: 540px; }
+    .case-1 {
+      grid-column: 1; grid-row: 1 / span 2; min-height: 540px;
+      background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg');
+      background-size: cover; background-position: center;
+    }
+    .case-1::after {
+      content: ""; position: absolute; inset: 0; border-radius: 24px;
+      background: linear-gradient(160deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.2) 100%);
+    }
+    .case-1 .meta-top, .case-1 > div:last-child { position: relative; z-index: 1; }
     .case-2 { background: linear-gradient(160deg, #FFDA00, #FF5408); color: var(--pt-noir); }
     .case-3 { background: linear-gradient(160deg, #FFECD9, #FFB48C); color: var(--pt-noir); }
     .case-4 { background: linear-gradient(160deg, #2A6FDB, #1D4A99); }
@@ -481,10 +490,10 @@
   </div>
   <div class="work-grid">
     <div class="case case-1">
-      <div class="meta-top"><span class="tag">Identité · Web</span><span class="yr">2025</span></div>
+      <div class="meta-top"><span class="tag">Photo · Réseaux sociaux</span><span class="yr">2025</span></div>
       <div>
-        <h4>Confitures Bouchon</h4>
-        <div class="sub">Refonte complète d'une marque familiale née en 1962. Nouvelle gamme bio, nouveau logo, e-commerce sur Shopify.</div>
+        <h4>Virtual Room</h4>
+        <div class="sub">Pour mettre en avant leur escape game innovant, on a imaginé une série de visuels qui plongent le public dans l'univers du jeu.</div>
       </div>
     </div>
     <div class="case case-2">
