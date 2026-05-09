@@ -106,7 +106,7 @@
     .marquee {
       padding: 24px 0 56px; border-top: 1px solid var(--pt-border);
       margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
-      padding-left: 32px;
+      padding-left: max(32px, calc((100vw - 1216px) / 2 + 32px));
     }
     .marquee-label {
       max-width: 1216px; margin: 0 auto 20px;
