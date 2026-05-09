@@ -101,11 +101,13 @@
     /* ============ MARQUEE ============ */
     .marquee {
       padding: 24px 0 56px; border-top: 1px solid var(--pt-border);
-      margin-top: 24px; display: flex; align-items: center; gap: 56px; overflow: hidden;
+      margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
     }
     .marquee-label { padding: 0 32px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-text-muted); font-weight: 600; flex-shrink: 0; }
-    .marquee-track { display: flex; gap: 56px; align-items: center; }
+    .marquee-inner { display: flex; overflow: hidden; flex: 1; }
+    .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 22s linear infinite; }
     .marquee-track span { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--pt-text-muted); white-space: nowrap; }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
     /* ============ SERVICES ============ */
     section.services { padding: 80px 32px; background: var(--pt-bg-warm); }
@@ -286,7 +288,7 @@
 <!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav">
-    <img src="assets/logo-baseline.png" alt="Pech'tacom">
+    <img src="assets/logo-color.png" alt="Pech'tacom">
     <div class="links">
       <a href="#" class="active">Studio</a>
       <a href="#services">Services</a>
@@ -328,14 +330,25 @@
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-label">Ils mûrissent avec nous</div>
-  <div class="marquee-track">
-    <span>Bomb Squad</span><span>·</span>
-    <span>Virtual Room</span><span>·</span>
-    <span>Cirk'étoile</span><span>·</span>
-    <span>Ordre des Experts-Comptables</span><span>·</span>
-    <span>Le Comptoir Pyrénéen</span><span>·</span>
-    <span>Les Halles d'Auch</span><span>·</span>
-    <span>Pépin &amp; Cie</span>
+  <div class="marquee-inner">
+    <div class="marquee-track" aria-hidden="false">
+      <span>Bomb Squad</span><span>·</span>
+      <span>Virtual Room</span><span>·</span>
+      <span>Cirk'étoile</span><span>·</span>
+      <span>Ordre des Experts-Comptables</span><span>·</span>
+      <span>Le Comptoir Pyrénéen</span><span>·</span>
+      <span>Les Halles d'Auch</span><span>·</span>
+      <span>Pépin &amp; Cie</span><span>·</span>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+      <span>Bomb Squad</span><span>·</span>
+      <span>Virtual Room</span><span>·</span>
+      <span>Cirk'étoile</span><span>·</span>
+      <span>Ordre des Experts-Comptables</span><span>·</span>
+      <span>Le Comptoir Pyrénéen</span><span>·</span>
+      <span>Les Halles d'Auch</span><span>·</span>
+      <span>Pépin &amp; Cie</span><span>·</span>
+    </div>
   </div>
 </div>
 
