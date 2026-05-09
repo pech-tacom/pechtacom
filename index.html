@@ -17,7 +17,7 @@
     /* ============ NAV ============ */
     .nav-wrap { padding: 24px 32px 0; position: sticky; top: 16px; z-index: 50; }
     .nav {
-      max-width: 1216px; margin: 0 auto;
+      max-width: 1296px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 14px 12px 24px; border-radius: 999px;
       background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
@@ -40,11 +40,11 @@
     /* ============ HERO ============ */
     .hero { padding: 56px 32px 80px; }
     .hero-grid {
-      max-width: 1216px; margin: 0 auto;
+      max-width: 1296px; margin: 0 auto;
       display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;
     }
     .hero .ey {
-      font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em;
+      font-family: var(--pt-font-title); font-size: 16px; letter-spacing: 0.18em;
       text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 20px;
     }
     .hero h1 {
@@ -53,7 +53,12 @@
       margin: 0 0 20px;
     }
     .hero h1 .couldeg {
-      background: var(--pt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;
+      background: var(--pt-gradient); -webkit-background-clip: text;
+       background-clip: text;
+        color: transparent;
+         font-style: italic;
+         padding-right: 10px;
+         
     }
     
     .hero .lede { font-size: 19px; line-height: 1.55; color: var(--pt-text-muted); max-width: 540px; margin: 0 0 32px; }
@@ -303,8 +308,8 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <div class="ey">★ AGENCE DE COMMUNICATION · STRASBOURG · 2026</div>
-      <h1>Le <span class="couldeg"><em>fruit</span></em><br>de vos idées</h1>
+      <div class="ey">★ AGENCE DE COMMUNICATION · STRASBOURG</div>
+      <h1>Le <span class="couldeg">fruit</span><br>de vos idées</h1>
       <p class="lede">De vos événements les plus précieux à votre image de marque, nous capturons, créons et sublimions ce qui vous ressemble.</p>
       <div class="actions">
         <a href="#contact" class="primary">Démarrer un projet →</a>
@@ -333,7 +338,7 @@
     <span>Virtual Room</span><span>·</span>
     <span>Cirk'étoile</span><span>·</span>
     <span>Ordre des Experts-Comptables</span><span>·</span>
-    <span>Le Comptoir Pyrénéen</span><span>·</span>
+    <span>L'atelière Spa</span><span>·</span>
     <span>Les Halles d'Auch</span><span>·</span>
     <span>Pépin &amp; Cie</span>
   </div>
