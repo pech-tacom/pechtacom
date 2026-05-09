@@ -103,12 +103,13 @@
     .float-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: #2D8A4F; }
 
     /* ============ MARQUEE ============ */
-    .marquee {
-      padding: 24px 0 56px; border-top: 1px solid var(--pt-border);
+<<<<<<< HEAD
+    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px;
+      padding: 24px 32px 56px; border-top: 1px solid var(--pt-border);
       margin-top: 24px; display: flex; align-items: center; gap: 0; overflow: hidden;
       padding-left: max(32px, calc((100vw - 1216px) / 2 + 32px));
     }
-    .marquee-label {
+    .marquee-label-wrap {
       max-width: 1216px; margin: 0 auto 20px;
       display: flex; align-items: end; justify-content: space-between; gap: 32px;
     }
@@ -120,7 +121,12 @@
       margin: 0; 
       max-width: 720px;
     }
+=======
+    .marquee-section { border-top: 1px solid var(--pt-border); margin-top: 24px; padding: 24px 32px 56px; }
+    .marquee-label-wrap { max-width: 1216px; margin: 0 auto 20px; }
+>>>>>>> refs/remotes/origin/main
     .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
+    .marquee { display: flex; overflow: hidden; margin-left: -32px; margin-right: -32px; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
     .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
     .marquee-track span { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--pt-text-muted); white-space: nowrap; }
@@ -277,8 +283,8 @@
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-vis { order: -1; max-width: 380px; margin: 0 auto; }
 
-      .marquee { gap: 24px; }
-      .marquee-label { padding: 0 16px; }
+      .marquee-section { padding-left: 16px; padding-right: 16px; }
+      .marquee { margin-left: -16px; margin-right: -16px; }
 
       section.services, section.process, section.work, section.quote, section.cta { padding: 64px 16px; }
       .services-head { flex-direction: column; }
@@ -347,25 +353,30 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-label">Ils ont mûri avec nous</div>
-  <div class="marquee-inner">
-    <div class="marquee-track" aria-hidden="false">
-      <span>Bomb Squad</span><span>·</span>
-      <span>Virtual Room</span><span>·</span>
-      <span>Cirk'&toile</span><span>·</span>
-      <span>CROEC</span><span>·</span>
-      <span>Pharel Green</span><span>·</span>
-      <span>Restaurant Mandala</span><span>·</span>
-      <span>Le mariage de Noé & Amandine</span><span>·</span>
-    </div>
-    <div class="marquee-track" aria-hidden="true">
-      <span>Bomb Squad</span><span>·</span>
-      <span>Virtual Room</span><span>·</span>
-      <span>Cirk'&toile</span><span>·</span>
-      <span>CROEC</span><span>·</span>
-      <span>Pharel Green</span><span>·</span>
-      <span>Restaurant Mandala</span><span>·</span>
-      <span>Le mariage de Noé & Amandine</span><span>·</span>
+<div class="marquee-section">
+  <div class="marquee-label-wrap">
+    <div class="marquee-label">Ils mûrissent avec nous</div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-inner">
+      <div class="marquee-track">
+        <span>Bomb Squad</span><span>·</span>
+        <span>Virtual Room</span><span>·</span>
+        <span>Cirk'étoile</span><span>·</span>
+        <span>Ordre des Experts-Comptables</span><span>·</span>
+        <span>Le Comptoir Pyrénéen</span><span>·</span>
+        <span>Les Halles d'Auch</span><span>·</span>
+        <span>Pépin &amp; Cie</span><span>·</span>
+      </div>
+      <div class="marquee-track" aria-hidden="true">
+        <span>Bomb Squad</span><span>·</span>
+        <span>Virtual Room</span><span>·</span>
+        <span>Cirk'étoile</span><span>·</span>
+        <span>Ordre des Experts-Comptables</span><span>·</span>
+        <span>Le Comptoir Pyrénéen</span><span>·</span>
+        <span>Les Halles d'Auch</span><span>·</span>
+        <span>Pépin &amp; Cie</span><span>·</span>
+      </div>
     </div>
   </div>
 </div>
