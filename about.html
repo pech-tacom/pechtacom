@@ -132,6 +132,45 @@
     .footer-bottom .legal { display: flex; gap: 20px; }
     .footer-bottom a { color: rgba(255,255,255,.6); text-decoration: none; }
 
+    /* ============ MENU MOBILE ============ */
+    .menu-toggle {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px; margin-right: 4px;
+    }
+    .menu-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--pt-noir); border-radius: 2px;
+      transition: transform 240ms var(--pt-ease-out), opacity 160ms;
+    }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(38,36,38,.96);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 4px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 300ms var(--pt-ease-out);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu-close {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; color: rgba(255,255,255,.7);
+      font-size: 28px; cursor: pointer; padding: 8px; line-height: 1;
+    }
+    .mobile-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .mobile-links a {
+      font-family: var(--pt-font-title); font-weight: 800;
+      font-size: clamp(36px, 10vw, 56px); letter-spacing: -0.03em;
+      color: white; text-decoration: none; padding: 10px 0;
+      transition: color 160ms;
+    }
+    .mobile-links a:hover { color: var(--pt-rose); }
+    .mobile-cta {
+      margin-top: 32px; background: var(--pt-rose); color: white;
+      font-weight: 700; font-size: 16px; padding: 16px 32px;
+      border-radius: 999px; text-decoration: none;
+    }
+
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1024px) {
       .values-pillars { grid-template-columns: 1fr 1fr; }
@@ -140,6 +179,8 @@
     @media (max-width: 768px) {
       .nav-wrap { padding: 16px 16px 0; }
       .nav .links { display: none; }
+      .nav .cta { display: none; }
+      .menu-toggle { display: flex; }
       .hero { padding: 48px 16px 56px; }
       section.team, section.story, section.values, section.faq, section.cta { padding: 64px 16px; }
       .team-grid { grid-template-columns: 1fr; }
@@ -165,6 +206,9 @@
       <a href="about.html" class="active">À propos</a>
     </div>
     <a href="index.html#contact" class="cta">Brief express →</a>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </div>
 
@@ -347,6 +391,29 @@
     </div>
   </div>
 </footer>
+
+<!-- MENU MOBILE OVERLAY -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu-close" aria-label="Fermer">✕</button>
+  <nav class="mobile-links">
+    <a href="index.html">Studio</a>
+    <a href="about.html">À propos</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <a href="index.html#contact" class="mobile-cta">Brief express →</a>
+</div>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const menu   = document.getElementById('mobileMenu');
+  const close  = menu.querySelector('.mobile-menu-close');
+  function openMenu()  { menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMenu() { menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', openMenu);
+  close.addEventListener('click', closeMenu);
+  menu.addEventListener('click', e => { if (e.target === menu) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+</script>
 
 </body>
 </html>

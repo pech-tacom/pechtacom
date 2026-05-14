@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Virtual Room — Projet réalisé par Pech'tacom. Photographie et création de contenus pour un escape game innovant à Strasbourg.">
+  <title>Virtual Room — Nos projets · Pech'tacom</title>
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--pt-bg); color: var(--pt-noir); font-family: var(--pt-font-body); }
+
+    /* ============ NAV ============ */
+    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 10px; z-index: 50; }
+    .nav {
+      max-width: 1216px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px 10px 20px; border-radius: 999px;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+      border: 1px solid rgba(38,36,38,.08);
+      box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
+    }
+    .nav img { height: 56px; }
+    .nav .links { display: flex; gap: 4px; }
+    .nav .links a { font-size: 14px; font-weight: 600; color: var(--pt-noir); padding: 8px 14px; border-radius: 999px; text-decoration: none; }
+    .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
+    .nav .cta { background: var(--pt-rose); color: white; font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+
+    /* ============ MENU MOBILE ============ */
+    .menu-toggle {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px; margin-right: 4px;
+    }
+    .menu-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--pt-noir); border-radius: 2px;
+      transition: transform 240ms var(--pt-ease-out), opacity 160ms;
+    }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(38,36,38,.96);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 4px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 300ms var(--pt-ease-out);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu-close {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; color: rgba(255,255,255,.7);
+      font-size: 28px; cursor: pointer; padding: 8px; line-height: 1;
+    }
+    .mobile-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .mobile-links a {
+      font-family: var(--pt-font-title); font-weight: 800;
+      font-size: clamp(36px, 10vw, 56px); letter-spacing: -0.03em;
+      color: white; text-decoration: none; padding: 10px 0;
+      transition: color 160ms;
+    }
+    .mobile-links a:hover { color: var(--pt-rose); }
+    .mobile-cta {
+      margin-top: 32px; background: var(--pt-rose); color: white;
+      font-weight: 700; font-size: 16px; padding: 16px 32px;
+      border-radius: 999px; text-decoration: none;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      height: 90vh; min-height: 560px;
+      position: relative; overflow: hidden;
+      display: flex; align-items: flex-end;
+      background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg');
+      background-size: cover; background-position: center;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(38,36,38,.85) 0%, rgba(38,36,38,.2) 50%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 56px max(32px, calc((100vw - 1216px) / 2 + 32px));
+      width: 100%;
+    }
+    .hero-content .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.7);
+      text-decoration: none; margin-bottom: 32px;
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      transition: color 160ms, border-color 160ms;
+    }
+    .hero-content .back-link:hover { color: white; border-color: rgba(255,255,255,.6); }
+    .hero-content .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .hero-content .tag {
+      font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.18); backdrop-filter: blur(10px); color: white;
+    }
+    .hero-content .yr { font-family: ui-monospace, monospace; font-size: 12px; color: rgba(255,255,255,.6); }
+    .hero-content h1 {
+      font-family: var(--pt-font-title); font-weight: 800;
+      font-size: clamp(48px, 7vw, 96px); letter-spacing: -0.04em; line-height: 0.95;
+      color: white; margin: 0 0 16px;
+    }
+    .hero-content .sub { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.8); max-width: 560px; margin: 0; }
+
+    /* ============ INTRO ============ */
+    section.intro { padding: 80px 32px; background: white; }
+    .intro-grid {
+      max-width: 1216px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start;
+    }
+    .intro-aside { position: sticky; top: 120px; }
+    .intro-aside .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 16px; }
+    .intro-aside h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.025em; line-height: 1.08; margin: 0 0 16px; }
+    .intro-aside .stats { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .intro-aside .stat { padding: 16px 20px; background: var(--pt-bg-warm); border-radius: 16px; }
+    .intro-aside .stat b { display: block; font-family: var(--pt-font-title); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; color: var(--pt-noir); }
+    .intro-aside .stat span { font-size: 13px; color: var(--pt-text-muted); }
+    .intro-body p { font-size: 18px; line-height: 1.75; color: var(--pt-text-muted); margin: 0 0 24px; }
+    .intro-body p:last-child { margin-bottom: 0; }
+
+    /* ============ GALERIE ============ */
+    section.galerie { padding: 80px 32px; background: var(--pt-noir); }
+    .galerie-head { max-width: 1216px; margin: 0 auto 40px; }
+    .galerie-head .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); font-weight: 700; margin-bottom: 12px; }
+    .galerie-head h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -0.025em; color: white; margin: 0; }
+    .galerie-grid {
+      max-width: 1216px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .galerie-grid .photo {
+      aspect-ratio: 4/3; overflow: hidden; border-radius: 16px;
+      background: rgba(255,255,255,.06);
+    }
+    .galerie-grid .photo.large { grid-column: span 2; aspect-ratio: 16/9; }
+    .galerie-grid .photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 400ms var(--pt-ease-out);
+    }
+    .galerie-grid .photo:hover img { transform: scale(1.04); }
+
+    /* ============ CTA ============ */
+    section.projet-cta { padding: 80px 32px; background: var(--pt-bg-warm); }
+    .projet-cta-inner {
+      max-width: 1216px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+    }
+    .projet-cta-inner h2 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -0.025em; line-height: 1.08; margin: 0; }
+    .projet-cta-inner .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .projet-cta-inner a.primary { background: var(--pt-rose); color: white; font-weight: 700; padding: 16px 26px; border-radius: 999px; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; box-shadow: 0 10px 24px -8px rgba(255,0,61,.5); }
+    .projet-cta-inner a.ghost { color: var(--pt-noir); font-weight: 700; padding: 16px 26px; border-radius: 999px; text-decoration: none; border: 2px solid var(--pt-noir); }
+
+    /* ============ FOOTER ============ */
+    footer.mini {
+      padding: 24px 32px; max-width: 1280px; margin: 0 auto; width: 100%;
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      font-size: 13px; color: var(--pt-text-muted);
+      border-top: 1px solid var(--pt-border);
+    }
+    footer.mini a { color: var(--pt-text-muted); text-decoration: none; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .nav-wrap { padding: 16px 16px 0; }
+      .nav { padding: 10px 10px 10px 16px; }
+      .nav .links { display: none; }
+      .nav .cta { display: none; }
+      .menu-toggle { display: flex; }
+
+      .hero-content { padding: 40px 16px; }
+      section.intro { padding: 56px 16px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .intro-aside { position: static; }
+      section.galerie { padding: 56px 16px; }
+      .galerie-grid { grid-template-columns: 1fr; }
+      .galerie-grid .photo.large { grid-column: auto; aspect-ratio: 4/3; }
+      section.projet-cta { padding: 56px 16px; }
+      .projet-cta-inner { flex-direction: column; align-items: flex-start; }
+      footer.mini { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="../index.html"><img src="../assets/LOGO COULEURS.png" alt="Pech'tacom"></a>
+    <div class="links">
+      <a href="../index.html">Studio</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#travaux" class="active">Travaux</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="../about.html">À propos</a>
+    </div>
+    <a href="../index.html#contact" class="cta">Brief express →</a>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <a href="../index.html#travaux" class="back-link">← Nos projets</a>
+    <div class="tags">
+      <span class="tag">Photo</span>
+      <span class="tag">Réseaux sociaux</span>
+      <span class="yr">2025</span>
+    </div>
+    <h1>Virtual Room</h1>
+    <p class="sub">Pour mettre en avant leur escape game innovant, on a imaginé une série de visuels qui plongent le public dans l'univers du jeu.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-grid">
+    <div class="intro-aside">
+      <div class="ey">Le projet</div>
+      <h2>Une ambiance, une image.</h2>
+      <div class="stats">
+        <div class="stat">
+          <b>Photo · Vidéo</b>
+          <span>Prestation réalisée</span>
+        </div>
+        <div class="stat">
+          <b>2025</b>
+          <span>Année du projet</span>
+        </div>
+        <div class="stat">
+          <b>Strasbourg</b>
+          <span>Lieu de tournage</span>
+        </div>
+      </div>
+    </div>
+    <div class="intro-body">
+      <p>Virtual Room propose une expérience d'escape game nouvelle génération à Strasbourg. Pour les aider à communiquer sur leurs univers immersifs, Pech'tacom a réalisé une série de prises de vue et de contenus pensés pour les réseaux sociaux.</p>
+      <p>L'enjeu : capturer l'atmosphère unique de chaque salle sans en dévoiler les secrets. Des photos qui donnent envie sans tout montrer — la tension, la lumière, l'urgence du jeu.</p>
+      <p>Résultat : des visuels forts et cohérents, prêts à être déclinés sur Instagram, les stories et les supports de communication de l'établissement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section class="galerie">
+  <div class="galerie-head">
+    <div class="ey">Galerie</div>
+    <h2>Les photos du projet</h2>
+  </div>
+  <div class="galerie-grid">
+    <div class="photo large">
+      <img src="https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg" alt="Virtual Room — photo principale">
+    </div>
+    <div class="photo">
+      <img src="https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg" alt="Virtual Room — détail">
+    </div>
+    <!-- Ajouter les prochaines photos ici sous ce format :
+    <div class="photo">
+      <img src="URL_DE_LA_PHOTO" alt="Virtual Room — description">
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="projet-cta">
+  <div class="projet-cta-inner">
+    <h2>Un projet similaire<br>en tête ?</h2>
+    <div class="actions">
+      <a href="../index.html#contact" class="primary">Démarrer un projet →</a>
+      <a href="../index.html#travaux" class="ghost">Voir tous les projets</a>
+    </div>
+  </div>
+</section>
+
+<footer class="mini">
+  <div>© 2026 Pech'tacom — Le fruit de vos idées</div>
+  <div><a href="../index.html">pechtacom.fr</a></div>
+</footer>
+
+<!-- MENU MOBILE OVERLAY -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu-close" aria-label="Fermer">✕</button>
+  <nav class="mobile-links">
+    <a href="../index.html">Studio</a>
+    <a href="../about.html">À propos</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+  <a href="../index.html#contact" class="mobile-cta">Brief express →</a>
+</div>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const menu   = document.getElementById('mobileMenu');
+  const close  = menu.querySelector('.mobile-menu-close');
+  function openMenu()  { menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMenu() { menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', openMenu);
+  close.addEventListener('click', closeMenu);
+  menu.addEventListener('click', e => { if (e.target === menu) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+</script>
+
+</body>
+</html>
