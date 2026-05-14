@@ -19,15 +19,15 @@
     .nav {
       max-width: 1216px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0px 14px 0px 24px; border-radius: 999px;
+      padding: 12px 14px 12px 24px; border-radius: 999px;
       background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
       border: 1px solid rgba(38,36,38,.08);
       box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
     }
-    .nav img { height: 80px; }
+    .nav img { height: 38px; }
     .nav .links { display: flex; gap: 4px; }
     .nav .links a {
-      font-size: 16px; font-weight: 600; color: var(--pt-noir);
+      font-size: 14px; font-weight: 600; color: var(--pt-noir);
       padding: 8px 14px; border-radius: 999px; text-decoration: none;
     }
     .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
@@ -385,7 +385,7 @@
 <!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav">
-    <img src="../assets/LOGO COULEURS.png" alt="Pech'tacom">
+    <a href="/accueil" style="display:flex; border:none; padding:0"><img src="../assets/LOGO COULEURS.png" alt="Pech'tacom"></a>
     <div class="links">
       <a href="#" class="active">Studio</a>
       <a href="#services">Services</a>
