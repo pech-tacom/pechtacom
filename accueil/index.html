@@ -733,14 +733,20 @@
       btn.textContent = 'Envoi en cours…';
       btn.disabled = true;
       try {
-        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-        if (res.ok) {
+        const payload = Object.fromEntries(new FormData(form));
+        const res  = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const json = await res.json();
+        if (json.success) {
           form.reset();
           showToast();
           btn.textContent = orig;
           btn.disabled = false;
         } else {
-          throw new Error('web3forms error ' + res.status);
+          throw new Error(json.message || 'Erreur web3forms');
         }
       } catch (err) {
         console.error(err);
