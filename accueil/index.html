@@ -346,6 +346,38 @@
     @media (max-width: 480px) {
       .hero .meta { flex-direction: column; gap: 16px; }
     }
+
+    /* ── Toast confirmation brief ── */
+    .toast {
+      position: fixed; bottom: 32px; right: 32px; z-index: 500;
+      width: 320px; background: white;
+      border-radius: 20px; padding: 28px 24px 24px;
+      box-shadow: 0 20px 60px -12px rgba(38,36,38,.22), 0 4px 16px -4px rgba(38,36,38,.1);
+      overflow: hidden;
+      transform: translateY(20px); opacity: 0; pointer-events: none;
+      transition: transform 420ms var(--pt-ease-out), opacity 320ms;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .toast-accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--pt-gradient);
+    }
+    .toast-close {
+      position: absolute; top: 12px; right: 14px;
+      background: none; border: none; cursor: pointer;
+      color: var(--pt-text-muted); font-size: 15px; padding: 4px; line-height: 1;
+    }
+    .toast-close:hover { color: var(--pt-noir); }
+    .toast-icon { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+    .toast-title {
+      font-family: var(--pt-font-title); font-weight: 800;
+      font-size: 20px; letter-spacing: -0.02em;
+      color: var(--pt-noir); margin-bottom: 8px;
+    }
+    .toast-body { font-size: 14px; line-height: 1.6; color: var(--pt-text-muted); }
+    @media (max-width: 480px) {
+      .toast { left: 16px; right: 16px; width: auto; bottom: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -588,7 +620,7 @@
       <input type="hidden" name="access_key" value="c65cbc5b-dbaa-4faa-9e58-1771724d14b2">
       <input type="hidden" name="subject" value="Nouveau brief — Pech'tacom">
       <input type="hidden" name="from_name" value="Site Pech'tacom">
-      <input type="hidden" name="redirect" value="https://pechtacom.fr/accueil">
+      <input type="hidden" name="botcheck" value="">
       <div>
         <label for="email">Votre e-mail</label>
         <input type="email" id="email" name="email" placeholder="marine@maison-fruits.fr" required>
@@ -652,7 +684,16 @@
   <a href="#contact" class="mobile-cta">Brief express →</a>
 </div>
 
+<div class="toast" id="briefToast" role="status" aria-live="polite">
+  <div class="toast-accent"></div>
+  <button class="toast-close" aria-label="Fermer">✕</button>
+  <div class="toast-icon">🍑</div>
+  <div class="toast-title">Brief bien cueilli !</div>
+  <div class="toast-body">On a bien reçu votre message. On revient vers vous sous 48h ouvrées — la réponse est faite maison, pas en série.</div>
+</div>
+
 <script>
+  /* Menu hamburger */
   const toggle = document.querySelector('.menu-toggle');
   const menu   = document.getElementById('mobileMenu');
   const close  = menu.querySelector('.mobile-menu-close');
@@ -662,6 +703,44 @@
   close.addEventListener('click', closeMenu);
   menu.addEventListener('click', e => { if (e.target === menu) closeMenu(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  /* Toast brief */
+  const toast      = document.getElementById('briefToast');
+  const toastClose = toast.querySelector('.toast-close');
+  let toastTimer;
+
+  function showToast() {
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, 7000);
+  }
+  function hideToast() {
+    toast.classList.remove('show');
+  }
+  toastClose.addEventListener('click', hideToast);
+
+  document.getElementById('brief-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target;
+    const btn  = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      if (res.ok) {
+        form.reset();
+        showToast();
+        btn.textContent = orig;
+        btn.disabled = false;
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Erreur — réessayez';
+      setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
+    }
+  });
 </script>
 
 </body>
