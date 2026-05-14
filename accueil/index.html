@@ -584,14 +584,18 @@
       <h2>Et si on en parlait autour d'un café&nbsp;?</h2>
       <p>Décrivez-nous votre projet en deux phrases, et on revient vers vous sous 48h ouvrées. Pas de chatbot, pas de relances commerciales.</p>
     </div>
-    <form>
+    <form id="brief-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="c65cbc5b-dbaa-4faa-9e58-1771724d14b2">
+      <input type="hidden" name="subject" value="Nouveau brief — Pech'tacom">
+      <input type="hidden" name="from_name" value="Site Pech'tacom">
+      <input type="hidden" name="redirect" value="https://pechtacom.fr/accueil">
       <div>
         <label for="email">Votre e-mail</label>
-        <input type="email" id="email" name="email" placeholder="marine@maison-fruits.fr">
+        <input type="email" id="email" name="email" placeholder="marine@maison-fruits.fr" required>
       </div>
       <div>
         <label for="projet">En une phrase, votre projet</label>
-        <input type="text" id="projet" name="projet" placeholder="On lance une nouvelle gamme bio…">
+        <input type="text" id="projet" name="projet" placeholder="On lance une nouvelle gamme bio…" required>
       </div>
       <button type="submit">Envoyer le brief →</button>
     </form>
