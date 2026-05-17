@@ -17,12 +17,12 @@
     .nav {
       max-width: 1216px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 14px 10px 20px; border-radius: 999px;
+      padding: 0px 14px 0px 24px; border-radius: 999px;
       background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
       border: 1px solid rgba(38,36,38,.08);
       box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
     }
-    .nav img { height: 56px; }
+    .nav img { height: 80px; }
     .nav .links { display: flex; gap: 4px; }
     .nav .links a { font-size: 14px; font-weight: 600; color: var(--pt-noir); padding: 8px 14px; border-radius: 999px; text-decoration: none; }
     .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
@@ -49,7 +49,7 @@
     }
     .mobile-menu.open { opacity: 1; pointer-events: all; backdrop-filter: blur(14px); }
     .mobile-menu-top {
-      margin-top: 10px; height: 60px;
+      margin-top: 10px; height: 84px;
       display: flex; justify-content: flex-end; align-items: center;
       padding-right: 14px; flex-shrink: 0;
     }
@@ -174,7 +174,7 @@
     /* ============ RESPONSIVE ============ */
     @media (max-width: 768px) {
       .nav-wrap { padding: 10px 16px 0; }
-      .nav { padding: 2px 14px 2px 20px; }
+      .nav { padding: 2px 12px 2px 16px; }
       .nav .links { display: none; }
       .nav .cta { display: none; }
       .menu-toggle { display: flex; }

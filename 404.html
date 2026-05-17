@@ -21,7 +21,7 @@
       padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;
       max-width: 1280px; margin: 0 auto; width: 100%;
     }
-    .nav img { height: 160px; }
+    .nav img { height: 80px; }
     .nav a.back {
       font-size: 14px; font-weight: 600; color: var(--pt-noir); text-decoration: none;
       padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--pt-noir);
@@ -137,17 +137,24 @@
     }
     .mobile-menu {
       position: fixed; inset: 0; z-index: 200;
-      background: rgba(38,36,38,.96);
+      background: rgba(38,36,38,.92);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 4px;
       opacity: 0; pointer-events: none;
-      transition: opacity 300ms;
+      transition: opacity 320ms var(--pt-ease-out), backdrop-filter 320ms;
     }
     .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu-top {
+      height: 84px; display: flex; align-items: center; justify-content: flex-end;
+      padding-right: 12px; flex-shrink: 0;
+    }
     .mobile-menu-close {
-      position: absolute; top: 24px; right: 24px;
       background: none; border: none; color: rgba(255,255,255,.7);
       font-size: 28px; cursor: pointer; padding: 8px; line-height: 1;
+    }
+    .mobile-menu-body {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 4px;
     }
     .mobile-links { display: flex; flex-direction: column; align-items: center; }
     .mobile-links a {
@@ -164,7 +171,7 @@
     @media (max-width: 768px) {
       main { grid-template-columns: 1fr; padding: 24px 16px 64px; }
       .vis-wrap { order: -1; max-width: 280px; margin: 0 auto; }
-      .nav { padding: 20px 16px; }
+      .nav { padding: 10px 16px 0; }
       .nav a.back { display: none; }
       .menu-toggle { display: flex; }
       footer.mini { padding: 20px 16px; }
@@ -214,13 +221,18 @@
 </footer>
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <button class="mobile-menu-close" aria-label="Fermer">✕</button>
-  <nav class="mobile-links">
-    <a href="/accueil">Studio</a>
-    <a href="/a-propos">À propos</a>
-    <a href="/accueil#contact">Contact</a>
-  </nav>
-  <a href="/accueil#contact" class="mobile-cta">Brief express →</a>
+  <div class="mobile-menu-top">
+    <button class="mobile-menu-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="mobile-menu-body">
+    <nav class="mobile-links">
+      <a href="/accueil">Studio</a>
+      <a href="/nos-projets">Nos projets</a>
+      <a href="/a-propos">À propos</a>
+      <a href="/accueil#contact">Contact</a>
+    </nav>
+    <a href="/accueil#contact" class="mobile-cta">Brief express →</a>
+  </div>
 </div>
 
 <script>
