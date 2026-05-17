@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tous les projets réalisés par Pech'tacom — photographie, vidéo, identité de marque, réseaux sociaux à Strasbourg.">
+  <title>Nos projets — Pech'tacom</title>
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--pt-bg); color: var(--pt-noir); font-family: var(--pt-font-body); }
+
+    /* ============ NAV ============ */
+    .nav-wrap { padding: 24px 32px 0; position: sticky; top: 10px; z-index: 50; }
+    .nav {
+      max-width: 1216px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 14px 12px 24px; border-radius: 999px;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+      border: 1px solid rgba(38,36,38,.08);
+      box-shadow: 0 4px 20px -8px rgba(38,36,38,.08);
+    }
+    .nav a.logo-link { display: flex; border: none; padding: 0; }
+    .nav img { height: 38px; }
+    .nav .links { display: flex; gap: 4px; }
+    .nav .links a { font-size: 14px; font-weight: 600; color: var(--pt-noir); padding: 8px 14px; border-radius: 999px; text-decoration: none; }
+    .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
+    .nav .cta { background: var(--pt-rose); color: white; font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 999px; text-decoration: none; }
+
+    /* ============ HERO ============ */
+    .hero { padding: 80px 32px 64px; background: var(--pt-bg-warm); }
+    .hero-inner { max-width: 1216px; margin: 0 auto; }
+    .hero .ey { font-family: var(--pt-font-title); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; margin-bottom: 16px; }
+    .hero h1 { font-family: var(--pt-font-title); font-weight: 800; font-size: clamp(40px, 6vw, 80px); letter-spacing: -0.035em; line-height: 0.98; margin: 0 0 20px; }
+    .hero h1 em { font-style: italic; background: var(--pt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero .lede { font-size: 18px; line-height: 1.55; color: var(--pt-text-muted); max-width: 560px; margin: 0; }
+
+    /* ============ FILTRES + GRILLE ============ */
+    section.projets { padding: 56px 32px 96px; background: white; }
+    .projets-inner { max-width: 1216px; margin: 0 auto; }
+
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 48px; }
+    .filter-btn {
+      font-family: var(--pt-font-body); font-size: 13px; font-weight: 700;
+      padding: 9px 18px; border-radius: 999px; border: none; cursor: pointer;
+      background: var(--pt-bg-warm); color: var(--pt-noir);
+      transition: background 200ms, color 200ms, transform 120ms;
+    }
+    .filter-btn:hover { background: #ffdcc0; }
+    .filter-btn.active { background: var(--pt-rose); color: white; }
+    .filter-btn:active { transform: scale(0.97); }
+
+    .projets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .projet-card {
+      position: relative; border-radius: 24px; overflow: hidden;
+      aspect-ratio: 4/3; background: var(--pt-noir);
+      text-decoration: none; color: white; display: block;
+      animation: fadeIn 240ms ease both;
+    }
+    .projet-card.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } }
+
+    .projet-card .cover {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 500ms var(--pt-ease-out);
+    }
+    .projet-card:hover .cover { transform: scale(1.04); }
+    .projet-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.65) 100%);
+      transition: opacity 300ms;
+    }
+    .projet-card:hover .overlay { opacity: .85; }
+
+    .projet-card .info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px; z-index: 2;
+    }
+    .projet-card .cats { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .projet-card .cat {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(255,255,255,.2); backdrop-filter: blur(8px);
+    }
+    .projet-card h3 { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; margin: 0 0 4px; line-height: 1.1; }
+    .projet-card .yr { font-size: 12px; opacity: .7; }
+
+    /* ============ FOOTER ============ */
+    footer { background: var(--pt-noir); color: white; padding: 50px 32px 40px; }
+    .footer-grid {
+      max-width: 1216px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-grid img { height: 160px; margin-bottom: -50px; margin-top: -50px; }
+    .footer-grid .tagline { font-family: var(--pt-font-title); font-weight: 500; font-style: italic; font-size: 18px; opacity: .85; max-width: 320px; line-height: 1.5; }
+    .footer-col h5 { font-family: var(--pt-font-title); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-jaune); margin: 0 0 16px; }
+    .footer-col a { display: block; color: rgba(255,255,255,.85); text-decoration: none; font-size: 14.5px; padding: 6px 0; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      max-width: 1216px; margin: 0 auto; padding-top: 24px;
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      font-size: 13px; color: rgba(255,255,255,.6);
+    }
+    .footer-bottom .legal { display: flex; gap: 20px; }
+    .footer-bottom a { color: rgba(255,255,255,.6); text-decoration: none; }
+
+    /* ============ MENU MOBILE ============ */
+    .menu-toggle {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px; margin-right: 4px;
+    }
+    .menu-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--pt-noir); border-radius: 2px;
+      transition: transform 240ms var(--pt-ease-out), opacity 160ms;
+    }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(38,36,38,.82);
+      backdrop-filter: blur(0px);
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none;
+      transition: opacity 450ms var(--pt-ease-out), backdrop-filter 500ms var(--pt-ease-out);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; backdrop-filter: blur(14px); }
+    .mobile-menu-top {
+      margin-top: 10px; height: 46px;
+      display: flex; justify-content: flex-end; align-items: center;
+      padding-right: 14px; flex-shrink: 0;
+    }
+    .mobile-menu-close {
+      background: none; border: none; color: rgba(255,255,255,.7);
+      font-size: 22px; cursor: pointer; padding: 8px; line-height: 1;
+    }
+    .mobile-menu-close:hover { color: white; }
+    .mobile-menu-body {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding-bottom: 48px;
+    }
+    .mobile-links { display: flex; flex-direction: column; align-items: center; }
+    .mobile-links a {
+      font-family: var(--pt-font-title); font-weight: 800;
+      font-size: clamp(32px, 9vw, 52px); letter-spacing: -0.03em;
+      color: white; text-decoration: none; padding: 8px 0;
+      transition: color 160ms;
+    }
+    .mobile-links a:hover { color: var(--pt-rose); }
+    .mobile-cta {
+      margin-top: 28px; background: var(--pt-rose); color: white;
+      font-weight: 700; font-size: 16px; padding: 16px 32px;
+      border-radius: 999px; text-decoration: none;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .projets-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-wrap { padding: 10px 16px 0; }
+      .nav { padding: 4px 14px 4px 24px; }
+      .nav .links { display: none; }
+      .nav .cta { display: none; }
+      .menu-toggle { display: flex; }
+      .hero { padding: 48px 16px 48px; }
+      section.projets { padding: 40px 16px 64px; }
+      .projets-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/accueil" class="logo-link"><img src="../assets/LOGO COULEURS.png" alt="Pech'tacom"></a>
+    <div class="links">
+      <a href="/accueil">Studio</a>
+      <a href="/accueil#services">Services</a>
+      <a href="/accueil#travaux">Travaux</a>
+      <a href="/nos-projets" class="active">Nos projets</a>
+      <a href="/accueil#process">Process</a>
+      <a href="/accueil#contact">Contact</a>
+      <a href="/a-propos">À propos</a>
+    </div>
+    <a href="/accueil#contact" class="cta">Brief express →</a>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="ey">★ Nos réalisations</div>
+    <h1>Ce qu'on a fait <em>pousser.</em></h1>
+    <p class="lede">Une sélection de projets récents — photographie, vidéo, identité de marque et réseaux sociaux.</p>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section class="projets">
+  <div class="projets-inner">
+
+    <!-- FILTRES -->
+    <div class="filter-bar" role="group" aria-label="Filtrer par prestation">
+      <button class="filter-btn active" data-filter="all">Tout voir</button>
+      <button class="filter-btn" data-filter="drone">Drone</button>
+      <button class="filter-btn" data-filter="photographie">Photographie</button>
+      <button class="filter-btn" data-filter="video">Vidéo</button>
+      <button class="filter-btn" data-filter="reseaux-sociaux">Réseaux sociaux</button>
+      <button class="filter-btn" data-filter="affiches">Affiches</button>
+      <button class="filter-btn" data-filter="flyer">Flyer</button>
+      <button class="filter-btn" data-filter="carte-visite">Carte de visite</button>
+      <button class="filter-btn" data-filter="identite-graphique">Identité graphique</button>
+    </div>
+
+    <!-- GRILLE -->
+    <div class="projets-grid">
+
+      <a class="projet-card" href="/nos-projets/virtual-room.html" data-categories="photographie reseaux-sociaux">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Photographie</span><span class="cat">Réseaux sociaux</span></div>
+          <h3>Virtual Room</h3>
+          <div class="yr">2026</div>
+        </div>
+      </a>
+
+      <a class="projet-card" href="/nos-projets/cirk-etoile.html" data-categories="reseaux-sociaux">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Réseaux sociaux</span></div>
+          <h3>Cirk'&amp;toile</h3>
+          <div class="yr">2026</div>
+        </div>
+      </a>
+
+      <a class="projet-card" href="/nos-projets/bomb-squad.html" data-categories="photographie video">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Photographie</span><span class="cat">Vidéo</span></div>
+          <h3>Bomb Squad</h3>
+          <div class="yr">2026</div>
+        </div>
+      </a>
+
+      <a class="projet-card" href="/nos-projets/ateliere-spa.html" data-categories="photographie reseaux-sociaux">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Photographie</span><span class="cat">Réseaux sociaux</span></div>
+          <h3>L'atelière SPA</h3>
+          <div class="yr">2026</div>
+        </div>
+      </a>
+
+      <a class="projet-card" href="/nos-projets/restaurant-mandala.html" data-categories="photographie reseaux-sociaux">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Photographie</span><span class="cat">Réseaux sociaux</span></div>
+          <h3>Restaurant Mandala</h3>
+          <div class="yr">2025</div>
+        </div>
+      </a>
+
+      <a class="projet-card" href="/nos-projets/le-village-secret.html" data-categories="photographie">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Photographie</span></div>
+          <h3>Le Village Secret</h3>
+          <div class="yr">2025</div>
+        </div>
+      </a>
+
+      <a class="projet-card" href="/nos-projets/prestation-immobiliere.html" data-categories="photographie drone video">
+        <div class="cover" style="background-image: url('https://res.cloudinary.com/deteat3at/image/upload/v1778358006/P1002016_df6lb0.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="cats"><span class="cat">Photographie</span><span class="cat">Drone</span><span class="cat">Vidéo</span></div>
+          <h3>Prestation immobilière</h3>
+          <div class="yr">2025</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="../assets/LOGO COULEURS.png" alt="Pech'tacom">
+      <p class="tagline">Agence de communication visuelle, basé à Strasbourg depuis 2025.<br>Le fruit de vos idées.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Agence</h5>
+      <a href="/a-propos">À propos</a>
+      <a href="#">Manifeste</a>
+      <a href="#">Recrutement</a>
+      <a href="#">Presse</a>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#">Identité</a>
+      <a href="#">Web</a>
+      <a href="#">Social</a>
+      <a href="#">Brand sprint</a>
+    </div>
+    <div class="footer-col">
+      <h5>Suivez-nous</h5>
+      <a href="https://www.instagram.com/pechtacom/">Instagram</a>
+      <a href="https://www.linkedin.com/company/pech-tacom/">LinkedIn</a>
+      <a href="https://www.facebook.com/profile.php?id=61560342137131">Facebook</a>
+      <a href="#">Newsletter<br><em>(En cours de floraison)</em></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Pech'tacom · Strasbourg</div>
+    <div class="legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MENU MOBILE OVERLAY -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <button class="mobile-menu-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="mobile-menu-body">
+    <nav class="mobile-links">
+      <a href="/accueil">Studio</a>
+      <a href="/nos-projets">Nos projets</a>
+      <a href="/a-propos">À propos</a>
+      <a href="/accueil#contact">Contact</a>
+    </nav>
+    <a href="/accueil#contact" class="mobile-cta">Brief express →</a>
+  </div>
+</div>
+
+<script>
+  /* Menu hamburger */
+  const toggle = document.querySelector('.menu-toggle');
+  const menu   = document.getElementById('mobileMenu');
+  if (toggle && menu) {
+    const close = menu.querySelector('.mobile-menu-close');
+    function openMenu()  { menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function closeMenu() { menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    toggle.addEventListener('click', openMenu);
+    if (close) close.addEventListener('click', closeMenu);
+    menu.addEventListener('click', e => { if (e.target === menu) closeMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  }
+
+  /* Filtres */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.projet-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        card.classList.toggle('hidden', f !== 'all' && !card.dataset.categories.split(' ').includes(f));
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
