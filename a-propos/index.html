@@ -26,7 +26,11 @@
     .nav .links { display: flex; gap: 4px; }
     .nav .links a { font-size: 14px; font-weight: 600; color: var(--pt-noir); padding: 8px 14px; border-radius: 999px; text-decoration: none; }
     .nav .links a.active, .nav .links a:hover { background: var(--pt-bg-warm); }
-    .nav .cta { background: var(--pt-rose); color: white; font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 999px; text-decoration: none; }
+    .nav .cta {
+      background: var(--pt-rose); color: white; font-weight: 700; font-size: 14px;
+      padding: 11px 18px; border-radius: 999px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
 
     /* ============ HERO ============ */
     .hero { padding: 72px 32px 80px; text-align: center; max-width: 960px; margin: 0 auto; }
@@ -155,7 +159,7 @@
     .mobile-menu-top {
       margin-top: 10px; height: 84px;
       display: flex; justify-content: flex-end; align-items: center;
-      padding-right: 14px; flex-shrink: 0;
+      padding-right: 12px; flex-shrink: 0;
     }
     .mobile-menu-close {
       background: none; border: none; color: rgba(255,255,255,.7);
@@ -166,7 +170,7 @@
       flex: 1; display: flex; flex-direction: column;
       align-items: center; justify-content: center; padding-bottom: 48px;
     }
-    .mobile-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .mobile-links { display: flex; flex-direction: column; align-items: center; }
     .mobile-links a {
       font-family: var(--pt-font-title); font-weight: 800;
       font-size: clamp(36px, 10vw, 56px); letter-spacing: -0.03em;
@@ -207,13 +211,14 @@
 <!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav">
-    <a href="/accueil"><img src="../assets/logo-color.png" alt="Pech'tacom"></a>
+    <a href="/accueil" style="display:flex; border:none; padding:0"><img src="../assets/LOGO COULEURS.png" alt="Pech'tacom"></a>
     <div class="links">
       <a href="/accueil">Studio</a>
       <a href="/accueil#services">Services</a>
       <a href="/accueil#travaux">Travaux</a>
       <a href="/nos-projets">Nos projets</a>
       <a href="/accueil#process">Process</a>
+      <a href="/accueil#contact">Contact</a>
       <a href="/a-propos" class="active">À propos</a>
     </div>
     <a href="/accueil#contact" class="cta">Brief express →</a>
