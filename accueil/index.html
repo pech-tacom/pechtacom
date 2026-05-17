@@ -108,7 +108,7 @@
     .marquee-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pt-rose); font-weight: 700; }
     .marquee { display: flex; overflow: hidden; margin-left: -32px; margin-right: -32px; }
     .marquee-inner { display: flex; overflow: hidden; flex: 1; }
-    .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; animation: marquee-scroll 18s linear infinite; }
+    .marquee-track { display: flex; gap: 56px; align-items: center; flex-shrink: 0; padding-right: 56px; animation: marquee-scroll 18s linear infinite; }
     .marquee-track span { font-family: var(--pt-font-title); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--pt-text-muted); white-space: nowrap; }
     @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
     .marquee-section--prestations .marquee-track { animation-direction: reverse; animation-duration: 26s; }
