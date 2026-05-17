@@ -41,17 +41,26 @@
     }
     .mobile-menu {
       position: fixed; inset: 0; z-index: 200;
-      background: rgba(38,36,38,.96);
+      background: rgba(38,36,38,.82);
+      backdrop-filter: blur(0px);
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 4px;
       opacity: 0; pointer-events: none;
-      transition: opacity 300ms var(--pt-ease-out);
+      transition: opacity 450ms var(--pt-ease-out), backdrop-filter 500ms var(--pt-ease-out);
     }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu.open { opacity: 1; pointer-events: all; backdrop-filter: blur(14px); }
+    .mobile-menu-top {
+      margin-top: 10px; height: 60px;
+      display: flex; justify-content: flex-end; align-items: center;
+      padding-right: 14px; flex-shrink: 0;
+    }
     .mobile-menu-close {
-      position: absolute; top: 24px; right: 24px;
       background: none; border: none; color: rgba(255,255,255,.7);
-      font-size: 28px; cursor: pointer; padding: 8px; line-height: 1;
+      font-size: 22px; cursor: pointer; padding: 8px; line-height: 1;
+    }
+    .mobile-menu-close:hover { color: white; }
+    .mobile-menu-body {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding-bottom: 48px;
     }
     .mobile-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
     .mobile-links a {
@@ -164,8 +173,8 @@
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 768px) {
-      .nav-wrap { padding: 16px 16px 0; }
-      .nav { padding: 10px 10px 10px 16px; }
+      .nav-wrap { padding: 10px 16px 0; }
+      .nav { padding: 2px 14px 2px 20px; }
       .nav .links { display: none; }
       .nav .cta { display: none; }
       .menu-toggle { display: flex; }
@@ -286,13 +295,17 @@
 
 <!-- MENU MOBILE OVERLAY -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <button class="mobile-menu-close" aria-label="Fermer">✕</button>
-  <nav class="mobile-links">
-    <a href="/accueil">Studio</a>
-    <a href="/a-propos">À propos</a>
-    <a href="/accueil#contact">Contact</a>
-  </nav>
-  <a href="/accueil#contact" class="mobile-cta">Brief express →</a>
+  <div class="mobile-menu-top">
+    <button class="mobile-menu-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="mobile-menu-body">
+    <nav class="mobile-links">
+      <a href="/accueil">Studio</a>
+      <a href="/a-propos">À propos</a>
+      <a href="/accueil#contact">Contact</a>
+    </nav>
+    <a href="/accueil#contact" class="mobile-cta">Brief express →</a>
+  </div>
 </div>
 
 <script>
